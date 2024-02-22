@@ -20,6 +20,13 @@ namespace Activity_2__CODE_FIRST_.MODEL
                 optionsBuilder.UseMySql("Server=localhost;Database=CLASSICMODEL;Uid=root;Pwd=\"\"");
             }
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<OrderDetail>()
+                .HasKey(o => new { o.OrderNumber, o.ProductCode });
+            modelBuilder.Entity<Payment>()
+                .HasKey(o => new { o.CustomerNumber, o.CheckNumber });
+        }
 
 
         public virtual DbSet<Customer> Customers { get; set; }
