@@ -21,7 +21,9 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
+        [ForeignKey(nameof(Employee.ReportsTo))]
         public int SalesRepEmployeeNumber { get; set; }
+        public Employee Employee { get; set; }
         public double CreditLimit { get; set; }
     }
 }
