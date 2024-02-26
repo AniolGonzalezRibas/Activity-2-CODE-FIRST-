@@ -14,7 +14,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public int CustomerNumber { get; set; }
         [Key]
         public string CheckNumber { get; set; }
-        public Date PaymentDate { get; set; }
+        public string PaymentDate { get; set; }
         public double Amount { get; set; }  
     }
 }

@@ -13,10 +13,10 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         public int OrderNumber { get; set; }
-        public Date OrderDate { get; set; }
+        public string OrderDate { get; set; }
         [Required]
-        public Date RequiredDate { get; set; }
-        public Date ShippedDate { get; set; }
+        public string RequiredDate { get; set; }
+        public string ShippedDate { get; set; }
         public string Status { get; set; }
         public string Comments { get; set; }
         [ForeignKey(nameof(Customer.CustomerNumber))]
