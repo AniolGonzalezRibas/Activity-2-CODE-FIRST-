@@ -10,14 +10,14 @@ namespace Activity_2__CODE_FIRST_.DAO
 {
     public interface IDAOManager
     {
-        public void AddProductLine(ProductLines productLines);
-        public void AddProduct(Product product);
-        public void AddOffice(Office office);
-        public void AddEmployee(Employee employee);
-        public void AddCustomer(Customer customer);
-        public void AddPayment(Payment payment);
-        public void AddOrder(Order order);
-        public void AddOrderDetail(OrderDetail orderDetail);
+        public bool AddProductLine(ProductLines productLines);
+        public bool AddProduct(Product product);
+        public bool AddOffice(Office office);
+        public bool AddEmployee(Employee employee);
+        public bool AddCustomer(Customer customer);
+        public bool AddPayment(Payment payment);
+        public bool AddOrder(Order order);
+        public bool AddOrderDetail(OrderDetail orderDetail);
 
         public void ImportProductLines(string fileName);
         public void ImportProduct(string fileName);
