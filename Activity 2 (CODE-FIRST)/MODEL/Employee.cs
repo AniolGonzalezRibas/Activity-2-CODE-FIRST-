@@ -19,8 +19,10 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [ForeignKey(nameof(Office.OfficeCode))]
         public string OfficeCode { get; set; }
         public Office Office { get; set; }
-        [ForeignKey(nameof(EmployeeNumber))]
+        [ForeignKey(nameof(Employee.EmployeeNumber))]
         public int ReportsTo { get; set; }
         public string JobTitle { get; set; }
+        public Employee ReportedEmployee { get; set; }
+
     }
 }
