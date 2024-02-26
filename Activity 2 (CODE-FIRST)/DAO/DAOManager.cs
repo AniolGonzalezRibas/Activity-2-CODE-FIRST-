@@ -17,42 +17,42 @@ namespace Activity_2__CODE_FIRST_.DAO
             this.context = context;
         }
 
-        public void AddCustomer(Customer customer)
+        public bool AddCustomer(Customer customer)
+        {
+            
+        }
+
+        public bool AddEmployee(Employee employee)
         {
             throw new NotImplementedException();
         }
 
-        public void AddEmployee(Employee employee)
+        public bool AddOffice(Office office)
         {
             throw new NotImplementedException();
         }
 
-        public void AddOffice(Office office)
+        public bool AddOrder(Order order)
         {
             throw new NotImplementedException();
         }
 
-        public void AddOrder(Order order)
+        public bool AddOrderDetail(OrderDetail orderDetail)
         {
             throw new NotImplementedException();
         }
 
-        public void AddOrderDetail(OrderDetail orderDetail)
+        public bool AddPayment(Payment payment)
         {
             throw new NotImplementedException();
         }
 
-        public void AddPayment(Payment payment)
+        public bool AddProduct(Product product)
         {
             throw new NotImplementedException();
         }
 
-        public void AddProduct(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddProductLine(ProductLines productLines)
+        public bool AddProductLine(ProductLines productLines)
         {
             throw new NotImplementedException();
         }
