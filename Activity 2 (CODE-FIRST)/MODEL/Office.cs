@@ -11,6 +11,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         public string OfficeCode { get; set; }
+        public string City { get; set; }
         public string Phone {  get; set; }
         public string AdressLine1 { get; set; }
         public string AdressLine2 { get; set; }

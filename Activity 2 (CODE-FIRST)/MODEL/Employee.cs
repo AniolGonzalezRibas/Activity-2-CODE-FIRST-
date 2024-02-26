@@ -20,7 +20,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string OfficeCode { get; set; }
         public Office Office { get; set; }
         [ForeignKey(nameof(Employee.EmployeeNumber))]
-        public int ReportsTo { get; set; }
+        public int? ReportsTo { get; set; }
         public string JobTitle { get; set; }
         public Employee ReportedEmployee { get; set; }
 
