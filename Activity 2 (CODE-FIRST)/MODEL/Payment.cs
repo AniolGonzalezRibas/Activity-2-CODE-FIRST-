@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper.Configuration.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,12 +14,15 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         [ForeignKey(nameof(Customer.CustomerNumber))]
+        [Name("customerNumber")]
         public int CustomerNumber { get; set; }
         [Key]
+        [Name("checkNumber")]
         public string CheckNumber { get; set; }
+        [Name("paymentDate")]
         public string PaymentDate { get; set; }
+        [Name("amount")]
         public double Amount { get; set; }
-
         public Customer Customer { get; set; }
 
     }
