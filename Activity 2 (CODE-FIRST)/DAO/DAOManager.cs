@@ -32,12 +32,15 @@ namespace Activity_2__CODE_FIRST_.DAO
 
         public bool AddCustomer(Customer customer)
         {
+            customer.Employee = context.Employees.Find(customer.SalesRepEmployeeNumber);
             context.Customers.Add(customer);
             return context.SaveChanges() > 0;
         }
 
         public bool AddEmployee(Employee employee)
         {
+            employee.Office = context.Offices.Find(employee.OfficeCode);
+            employee.ReportedEmployee = context.Employees.Find(employee.ReportsTo);
             context.Employees.Add(employee);
             return context.SaveChanges() > 0;
         }
@@ -50,24 +53,29 @@ namespace Activity_2__CODE_FIRST_.DAO
 
         public bool AddOrder(Order order)
         {
+            order.Customer = context.Customers.Find(order.CustomerNumber);
             context.Orders.Add(order);
             return context.SaveChanges() > 0;
         }
 
         public bool AddOrderDetail(OrderDetail orderDetail)
         {
+            orderDetail.Order = context.Orders.Find(orderDetail.OrderNumber);
+            orderDetail.Product = context.Products.Find(orderDetail.ProductCode);
             context.OrderDetails.Add(orderDetail);
             return context.SaveChanges() > 0;
         }
 
         public bool AddPayment(Payment payment)
         {
+            payment.Customer = context.Customers.Find(payment.CustomerNumber);
             context.Payments.Add(payment);
             return context.SaveChanges() > 0;
         }
 
         public bool AddProduct(Product product)
         {
+            product.ProductLines = context.ProductLiness.Find(product.ProductLine);
             context.Products.Add(product);
             return context.SaveChanges() > 0;
         }
