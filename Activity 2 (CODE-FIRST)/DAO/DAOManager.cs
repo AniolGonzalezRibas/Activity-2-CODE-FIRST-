@@ -1,7 +1,12 @@
 ﻿using Activity_2__CODE_FIRST_.MODEL;
+using CsvHelper;
+using CsvHelper.Configuration;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Formats.Asn1;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -76,29 +81,13 @@ namespace Activity_2__CODE_FIRST_.DAO
         public void ImportCustomers(string fileName)
         {
             using (var reader = new StreamReader(fileName))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                String line = reader.ReadLine();
-                line = reader.ReadLine();
-                while (line != null)
+                var customers = csv.GetRecords<Customer>();
+
+                foreach (var customer in customers)
                 {
-                    String[] parts = line.Split(',');
-                    Customer customer = new Customer
-                    {
-                        CustomerNumber = int.Parse(parts[0]),
-                        CustomerName = parts[1],
-                        ContactLastName = parts[2],
-                        ContactFirstName = parts[3],
-                        Phone = parts[4],
-                        AdressLine1 = parts[5],
-                        AdressLine2 = parts[6],
-                        City = parts[7],
-                        State = parts[8],
-                        PostalCode = parts[9],
-                        SalesRepEmployeeNumber = int.Parse(parts[10]),
-                        CreditLimit = double.Parse(parts[12])
-                    };
                     AddCustomer(customer);
-                    line = reader.ReadLine();
                 }
             }
         }
