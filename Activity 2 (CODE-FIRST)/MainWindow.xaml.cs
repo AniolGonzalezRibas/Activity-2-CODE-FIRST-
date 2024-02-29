@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using Activity_2__CODE_FIRST_.DAO;
+using Activity_2__CODE_FIRST_.MODEL;
+using CsvHelper;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +19,14 @@ namespace Activity_2__CODE_FIRST_
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IDAOManager manager;
+
         public MainWindow()
         {
             InitializeComponent();
+            manager = DAOFactory.GetDAOManager();
+
+            manager.ImportAll();
         }
     }
 }

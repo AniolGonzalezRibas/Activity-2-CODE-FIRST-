@@ -8,9 +8,9 @@ namespace Activity_2__CODE_FIRST_.DAO
 {
     public class DAOFactory
     {
-        public static IDAOManager GetDAOManager(MODEL.ClassicModelDbContext context)
+        public static IDAOManager GetDAOManager()
         {
-            return new DAOManager(context);
+            return new DAOManager();
         }
     }
 }

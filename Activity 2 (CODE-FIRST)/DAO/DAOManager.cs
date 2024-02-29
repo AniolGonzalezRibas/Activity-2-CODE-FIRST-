@@ -16,18 +16,18 @@ namespace Activity_2__CODE_FIRST_.DAO
 {
     public class DAOManager : IDAOManager
     {
-        private const string CUSTOMERS_FILENAME = "CUSTOMERS.CSV";
-        private const string EMPLOYEES_FILENAME = "EMPLOYEES.CSV";
-        private const string OFFICES_FILENAME = "OFFICES.CSV";
-        private const string ORDERDETAILS_FILENAME = "ORDERDETAILS.CSV";
-        private const string ORDERS_FILENAME = "ORDERS.CSV";
-        private const string PAYMENTS_FILENAME = "PAYMENTS.CSV";
-        private const string PRODUCTLINES_FILENAME = "PRODUCTLINES.CSV";
-        private const string PRODUCTS_FILENAME = "PRODUCTS.CSV";
+        private const string CUSTOMERS_FILENAME = "CSV/CUSTOMERS.CSV";
+        private const string EMPLOYEES_FILENAME = "CSV/EMPLOYEES.CSV";
+        private const string OFFICES_FILENAME = "CSV/OFFICES.CSV";
+        private const string ORDERDETAILS_FILENAME = "CSV/ORDERDETAILS.CSV";
+        private const string ORDERS_FILENAME = "CSV/ORDERS.CSV";
+        private const string PAYMENTS_FILENAME = "CSV/PAYMENTS.CSV";
+        private const string PRODUCTLINES_FILENAME = "CSV/PRODUCTLINES.CSV";
+        private const string PRODUCTS_FILENAME = "CSV/PRODUCTS.CSV";
         private MODEL.ClassicModelDbContext context = null;
-        public DAOManager(MODEL.ClassicModelDbContext context)
+        public DAOManager()
         {
-            this.context = context;
+            this.context = new ClassicModelDbContext();
         }
 
         public bool AddCustomer(Customer customer)
@@ -84,7 +84,6 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
                 var customers = csv.GetRecords<Customer>();
-
                 foreach (var customer in customers)
                 {
                     AddCustomer(customer);
