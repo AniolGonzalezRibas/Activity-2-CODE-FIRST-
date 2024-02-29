@@ -27,5 +27,7 @@ namespace Activity_2__CODE_FIRST_.DAO
         public void ImportPayments(string fileName);
         public void ImportOrders(string fileName);
         public void ImportOrderDetails(string fileName);
+
+        public void ImportAll();
     }
 }

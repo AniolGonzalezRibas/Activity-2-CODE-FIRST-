@@ -11,6 +11,14 @@ namespace Activity_2__CODE_FIRST_.DAO
 {
     public class DAOManager : IDAOManager
     {
+        private const string CUSTOMERS_FILENAME = "CUSTOMERS.CSV";
+        private const string EMPLOYEES_FILENAME = "EMPLOYEES.CSV";
+        private const string OFFICES_FILENAME = "OFFICES.CSV";
+        private const string ORDERDETAILS_FILENAME = "ORDERDETAILS.CSV";
+        private const string ORDERS_FILENAME = "ORDERS.CSV";
+        private const string PAYMENTS_FILENAME = "PAYMENTS.CSV";
+        private const string PRODUCTLINES_FILENAME = "PRODUCTLINES.CSV";
+        private const string PRODUCTS_FILENAME = "PRODUCTS.CSV";
         private MODEL.ClassicModelDbContext context = null;
         public DAOManager(MODEL.ClassicModelDbContext context)
         {
@@ -19,42 +27,50 @@ namespace Activity_2__CODE_FIRST_.DAO
 
         public bool AddCustomer(Customer customer)
         {
-            
+            context.Customers.Add(customer);
+            return context.SaveChanges() > 0;
         }
 
         public bool AddEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            context.Employees.Add(employee);
+            return context.SaveChanges() > 0;
         }
 
         public bool AddOffice(Office office)
         {
-            throw new NotImplementedException();
+            context.Offices.Add(office);
+            return context.SaveChanges() > 0;
         }
 
         public bool AddOrder(Order order)
         {
-            throw new NotImplementedException();
+            context.Orders.Add(order);
+            return context.SaveChanges() > 0;
         }
 
         public bool AddOrderDetail(OrderDetail orderDetail)
         {
-            throw new NotImplementedException();
+            context.OrderDetails.Add(orderDetail);
+            return context.SaveChanges() > 0;
         }
 
         public bool AddPayment(Payment payment)
         {
-            throw new NotImplementedException();
+            context.Payments.Add(payment);
+            return context.SaveChanges() > 0;
         }
 
         public bool AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            context.Products.Add(product);
+            return context.SaveChanges() > 0;
         }
 
         public bool AddProductLine(ProductLines productLines)
         {
-            throw new NotImplementedException();
+            context.ProductLiness.Add(productLines);
+            return context.SaveChanges() > 0;
         }
 
         public void ImportCustomers(string fileName)
@@ -220,6 +236,18 @@ namespace Activity_2__CODE_FIRST_.DAO
         public void ImportProductLines(string fileName)
         {
             throw new NotImplementedException();
+        }
+
+        public void ImportAll()
+        {
+            ImportCustomers(CUSTOMERS_FILENAME);
+            ImportEmployees(EMPLOYEES_FILENAME);
+            ImportOffices(OFFICES_FILENAME);
+            ImportOrderDetails(ORDERDETAILS_FILENAME);
+            ImportOrders(ORDERS_FILENAME);
+            ImportPayments(PAYMENTS_FILENAME);
+            ImportProduct(PRODUCTS_FILENAME);
+            ImportProductLines(PRODUCTLINES_FILENAME);
         }
     }
 } 
