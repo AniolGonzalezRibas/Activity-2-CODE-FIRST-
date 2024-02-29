@@ -23,6 +23,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string PaymentDate { get; set; }
         [Name("amount")]
         public double Amount { get; set; }
+        [Ignore]
         public Customer Customer { get; set; }
 
     }

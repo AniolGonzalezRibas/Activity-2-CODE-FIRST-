@@ -25,13 +25,16 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [ForeignKey(nameof(Office.OfficeCode))]
         [Name("officeCode")]
         public string OfficeCode { get; set; }
+        [Ignore]
         public Office Office { get; set; }
         [ForeignKey(nameof(Employee.EmployeeNumber))]
         [Name("reportsTo")]
         public int? ReportsTo { get; set; }
         [Name("jobTitle")]
-        public string JobTitle { get; set; }
+        [Ignore]
         public Employee ReportedEmployee { get; set; }
+        public string JobTitle { get; set; }
+        
 
     }
 }

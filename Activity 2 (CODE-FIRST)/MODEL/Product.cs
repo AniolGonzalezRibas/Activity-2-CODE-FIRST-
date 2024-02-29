@@ -22,6 +22,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [ForeignKey(nameof(ProductLines.ProductLine))]
         public string ProductLine {  get; set; }
 
+        [Ignore]
         public ProductLines ProductLines { get; set; }
 
         [Name("productScale")]

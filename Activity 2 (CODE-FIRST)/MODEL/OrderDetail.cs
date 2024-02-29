@@ -19,7 +19,9 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [ForeignKey(nameof(Product.ProductCode))]
         [Name("productCode")]
         public string ProductCode { get; set; }
+        [Ignore]
         public Product Product { get; set; }
+        [Ignore]
         public Order Order { get; set; }
         [Name("quantityOrdered")]
         public int QuantityOrdered { get; set; }

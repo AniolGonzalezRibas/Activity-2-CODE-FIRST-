@@ -36,8 +36,8 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string Country { get; set; }
         [ForeignKey(nameof(Employee.ReportsTo))]
         [Name("salesRepEmployeeNumber")]
-        public int SalesRepEmployeeNumber { get; set; }
-        
+        public int SalesRepEmployeeNumber { get; set; }   
+        [Ignore]
         public Employee Employee { get; set; }
         [Name("creditLimit")]
         public double CreditLimit { get; set; }

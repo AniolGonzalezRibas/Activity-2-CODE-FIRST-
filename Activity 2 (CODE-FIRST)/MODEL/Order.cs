@@ -32,6 +32,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [ForeignKey(nameof(Customer.CustomerNumber))]
         [Name("customerNumber")]
         public int CustomerNumber { get; set; }
+        [Ignore]
         public Customer Customer { get; set; }
     }
 }
