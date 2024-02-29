@@ -16,7 +16,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [Name("orderNumber")]
         public int OrderNumber { get; set; }
         [Key]
-        [ForeignKey(nameof(Product.ProducCode))]
+        [ForeignKey(nameof(Product.ProductCode))]
         [Name("productCode")]
         public string ProductCode { get; set; }
         public Product Product { get; set; }
