@@ -12,7 +12,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
     public class Product
     {
         [Key]
-        public string ProducCode { get; set; }
+        [Name("productCode")]
         public string ProductCode { get; set; }
 
         [Name("productName")]
