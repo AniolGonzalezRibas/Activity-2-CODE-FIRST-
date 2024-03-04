@@ -31,7 +31,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string? Comments { get; set; }
         [ForeignKey("Customer")]
         [Name("customerNumber")]
-        public int CustomerNumber { get; set; }
+        public int? CustomerNumber { get; set; }
 
         [Ignore]
         public Customer Customer { get; set; }

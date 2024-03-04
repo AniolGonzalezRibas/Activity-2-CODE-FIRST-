@@ -30,6 +30,46 @@ namespace Activity_2__CODE_FIRST_.DAO
             this.context = new ClassicModelDbContext();
         }
 
+        public List<Customer> GetCustomers()
+        {
+            return context.Customers.ToList();
+        }
+
+        public List<Employee> GetEmployees()
+        {
+            return context.Employees.ToList();
+        }
+
+        public List<Office> GetOffices()
+        {
+            return context.Offices.ToList();
+        }
+
+        public List<Order> GetOrders()
+        {
+            return context.Orders.ToList();
+        }
+
+        public List<OrderDetail> GetOrderDetails()
+        {
+            return context.OrderDetails.ToList();
+        }
+
+        public List<Payment> GetPayments()
+        {
+            return context.Payments.ToList();
+        }
+
+        public List<Product> GetProducts()
+        {
+            return context.Products.ToList();
+        }
+
+        public List<ProductLines> GetProductLines()
+        {
+            return context.ProductLiness.ToList();
+        }
+
         public bool AddCustomer(Customer customer)
         {
             customer.Employee = context.Employees.Find(customer.SalesRepEmployeeNumber);

@@ -26,7 +26,57 @@ namespace Activity_2__CODE_FIRST_
             InitializeComponent();
             manager = DAOFactory.GetDAOManager();
 
-            manager.ImportAll();
+            //manager.ImportAll();
+
+            dtgCustomers.ItemsSource = manager.GetCustomers();
+            dtgEmployees.ItemsSource = manager.GetEmployees();
+            dtgOfficess.ItemsSource = manager.GetOffices();
+            dtgOrders.ItemsSource = manager.GetOrders();
+            dtgOrderDetails.ItemsSource = manager.GetOrderDetails();
+            dtgPayments.ItemsSource = manager.GetPayments();
+            dtgProducts.ItemsSource = manager.GetProducts();
+            dtgProductLines.ItemsSource = manager.GetProductLines();
         }
+
+        private void btnCustomersFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEmployeesFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOfficesFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSurnameFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOrderDetailsFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnPaymentFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnProductsFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnProductLinesFilter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

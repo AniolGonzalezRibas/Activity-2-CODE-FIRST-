@@ -1,10 +1,4 @@
 ﻿using Activity_2__CODE_FIRST_.MODEL;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Activity_2__CODE_FIRST_.DAO
 {
@@ -18,7 +12,7 @@ namespace Activity_2__CODE_FIRST_.DAO
         public bool AddPayment(Payment payment);
         public bool AddOrder(Order order);
         public bool AddOrderDetail(OrderDetail orderDetail);
-
+    
         public void ImportProductLines(string fileName);
         public void ImportProduct(string fileName);
         public void ImportOffices(string fileName);
@@ -27,7 +21,16 @@ namespace Activity_2__CODE_FIRST_.DAO
         public void ImportPayments(string fileName);
         public void ImportOrders(string fileName);
         public void ImportOrderDetails(string fileName);
-
+     
         public void ImportAll();
+      
+        public List<Customer> GetCustomers();
+        public List<Employee> GetEmployees();
+        public List<Office> GetOffices();
+        public List<Order> GetOrders();
+        public List<OrderDetail> GetOrderDetails();
+        public List<Payment> GetPayments();
+        public List<Product> GetProducts();
+        public List<ProductLines> GetProductLines();
     }
 }
