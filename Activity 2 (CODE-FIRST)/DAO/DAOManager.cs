@@ -85,15 +85,36 @@ namespace Activity_2__CODE_FIRST_.DAO
             context.ProductLiness.Add(productLines);
             return context.SaveChanges() > 0;
         }
+        private static T ParseField<T>(string? value)
+        {
+            return string.Equals(value, "NULL", StringComparison.OrdinalIgnoreCase) ? default : (T)Convert.ChangeType(value, typeof(T));
+        }
 
         public void ImportCustomers(string fileName)
         {
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var customers = csv.GetRecords<Customer>();
-                foreach (var customer in customers)
+                csv.Read();
+                csv.ReadHeader();
+
+
+                while (csv.Read())
                 {
+                    var customer = new Customer();
+                    customer.CustomerNumber = ParseField<int>(csv.GetField("employeeNumber"));
+                    customer.CustomerName = ParseField<string>(csv.GetField("lastName"));
+                    customer.ContactLastName = ParseField<string>(csv.GetField("firstName"));
+                    customer.ContactFirstName = ParseField<string>(csv.GetField("extension"));
+                    customer.Phone = ParseField<string>(csv.GetField("email"));
+                    customer.AdressLine1 = ParseField<string>(csv.GetField("officeCode"));
+                    customer.AdressLine2 = ParseField<string>(csv.GetField("reportsTo"));
+                    customer.City = ParseField<string>(csv.GetField("jobTitle"));
+                    customer.State = ParseField<string>(csv.GetField("jobTitle"));
+                    customer.PostalCode = ParseField<string>(csv.GetField("jobTitle"));
+                    customer.Country = ParseField<string>(csv.GetField("jobTitle"));
+                    customer.SalesRepEmployeeNumber = ParseField<int>(csv.GetField("jobTitle"));
+                    customer.CreditLimit = ParseField<double>(csv.GetField("jobTitle"));
                     AddCustomer(customer);
                 }
             }
@@ -112,17 +133,14 @@ namespace Activity_2__CODE_FIRST_.DAO
                 {
                     var employee = new Employee();
 
-                    employee.EmployeeNumber = csv.GetField<int>("employeeNumber");
-                    employee.LastName = csv.GetField("lastName");
-                    employee.FirstName = csv.GetField("firstName");
-                    employee.Extension = csv.GetField("extension");
-                    employee.Email = csv.GetField("email");
-                    employee.OfficeCode = csv.GetField("officeCode");
-                    string reportsToString = csv.GetField("reportsTo");
-                    employee.ReportsTo = string.Equals(reportsToString, "NULL", StringComparison.OrdinalIgnoreCase) ? null : (int?)int.Parse(reportsToString);
-
-                    employee.JobTitle = csv.GetField("jobTitle");
-
+                    employee.EmployeeNumber = ParseField<int>(csv.GetField("employeeNumber"));
+                    employee.LastName = ParseField<string>(csv.GetField("lastName"));
+                    employee.FirstName = ParseField<string>(csv.GetField("firstName"));
+                    employee.Extension = ParseField<string>(csv.GetField("extension"));
+                    employee.Email = ParseField<string>(csv.GetField("email"));
+                    employee.OfficeCode = ParseField<string>(csv.GetField("officeCode"));
+                    employee.ReportsTo = ParseField<int?>(csv.GetField("reportsTo"));
+                    employee.JobTitle = ParseField<string>(csv.GetField("jobTitle"));
                     AddEmployee(employee);
                 }
 
@@ -135,10 +153,23 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var offices = csv.GetRecords<Office>();
+                csv.Read();
+                csv.ReadHeader();
 
-                foreach (var office in offices)
+
+                while (csv.Read())
                 {
+                    var office = new Office();
+                    office.OfficeCode = ParseField<string>(csv.GetField("officeCode"));
+                    office.City = ParseField<string>(csv.GetField("city"));
+                    office.Phone = ParseField<string>(csv.GetField("phone"));
+                    office.AdressLine1 = ParseField<string>(csv.GetField("addressLine1"));
+                    office.AdressLine2 = ParseField<string>(csv.GetField("addressLine2"));
+                    office.State = ParseField<string>(csv.GetField("state"));
+                    office.Country = ParseField<string>(csv.GetField("country"));
+                    office.PostalCode = ParseField<string>(csv.GetField("postalCode"));
+                    office.Territory = ParseField<string>(csv.GetField("territory"));
+
                     AddOffice(office);
                 }
             }
@@ -150,10 +181,20 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var orderDetails = csv.GetRecords<OrderDetail>();
+                csv.Read();
+                csv.ReadHeader();
 
-                foreach (var orderDetail in orderDetails)
+
+                while (csv.Read())
                 {
+                    var orderDetail = new OrderDetail();
+                    orderDetail.OrderNumber = ParseField<int>(csv.GetField("orderNumber"));
+                    orderDetail.ProductCode = ParseField<string>(csv.GetField("productCode"));
+                    orderDetail.QuantityOrdered = ParseField<int>(csv.GetField("quantityOrdered"));
+                    orderDetail.PriceEach = ParseField<double>(csv.GetField("priceEach"));
+                    orderDetail.OrderLineNumber = ParseField<short>(csv.GetField("orderLineNumber"));
+                    
+
                     AddOrderDetail(orderDetail);
                 }
             }
@@ -164,10 +205,23 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var orders = csv.GetRecords<Order>();
+                csv.Read();
+                csv.ReadHeader();
 
-                foreach (var order in orders)
+
+                while (csv.Read())
                 {
+                    var order = new Order();
+                    order.OrderNumber = ParseField<int>(csv.GetField("orderNumber"));
+                    order.OrderDate = ParseField<DateTime>(csv.GetField("orderDate"));
+                    order.RequiredDate = ParseField<DateTime>(csv.GetField("requiredDate"));
+                    order.ShippedDate = ParseField<DateTime>(csv.GetField("shippedDate"));
+                    order.Status = ParseField<string>(csv.GetField("status"));
+                    order.Comments = ParseField<string>(csv.GetField("comments"));
+                    order.CustomerNumber = ParseField<int>(csv.GetField("customerNumber"));
+
+
+
                     AddOrder(order);
                 }
             }
@@ -179,10 +233,20 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var payments = csv.GetRecords<Payment>();
+                csv.Read();
+                csv.ReadHeader();
 
-                foreach (var payment in payments)
+
+                while (csv.Read())
                 {
+                    var payment = new Payment();
+                    payment.CustomerNumber = ParseField<int>(csv.GetField("customerNumber"));
+                    payment.CheckNumber = ParseField<string>(csv.GetField("checkNumber"));
+                    payment.PaymentDate = ParseField<string>(csv.GetField("paymentDate"));
+                    payment.Amount = ParseField<double>(csv.GetField("amount"));
+
+
+
                     AddPayment(payment);
                 }
             }
@@ -193,10 +257,26 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var products = csv.GetRecords<Product>();
+                csv.Read();
+                csv.ReadHeader();
 
-                foreach (var product in products)
+
+                while (csv.Read())
                 {
+                    var product = new Product();
+                    product.ProductCode = ParseField<string>(csv.GetField("productCode"));
+                    product.ProductName = ParseField<string>(csv.GetField("productName"));
+                    product.ProductLine = ParseField<string>(csv.GetField("productLine"));
+                    product.ProductScale = ParseField<string>(csv.GetField("productScale"));
+                    product.ProductVendor = ParseField<string>(csv.GetField("productVendor"));
+                    product.ProductDescription = ParseField<string>(csv.GetField("productDescription"));
+                    product.QuantityStock = ParseField<short>(csv.GetField("quantityInStock"));
+                    product.BuyPrice = ParseField<double>(csv.GetField("buyPrice"));
+                    product.MSRP = ParseField<double>(csv.GetField("MSRP"));
+
+
+
+
                     AddProduct(product);
                 }
             }
@@ -207,20 +287,28 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var productsLines = csv.GetRecords<ProductLines>();
+                csv.Read();
+                csv.ReadHeader();
 
-                foreach (var productLines in productsLines)
+
+                while (csv.Read())
                 {
-                    AddProductLine(productLines);
+                    var productLine = new ProductLines();
+                    productLine.ProductLine = ParseField<string>(csv.GetField("productLine"));
+                    productLine.TextDescription = ParseField<string>(csv.GetField("textDescription"));
+                    productLine.HtmlDescription = ParseField<string>(csv.GetField("htmlDescription"));
+                    productLine.Image = ParseField<string>(csv.GetField("image"));
+                    
+                    AddProductLine(productLine);
                 }
             }
         }
 
         public void ImportAll()
         {
-            //ImportProductLines(PRODUCTLINES_FILENAME);
-            //ImportProduct(PRODUCTS_FILENAME);
-            //ImportOffices(OFFICES_FILENAME);
+            ImportProductLines(PRODUCTLINES_FILENAME);
+            ImportProduct(PRODUCTS_FILENAME);
+            ImportOffices(OFFICES_FILENAME);
             ImportEmployees(EMPLOYEES_FILENAME);
             ImportCustomers(CUSTOMERS_FILENAME);
             ImportPayments(PAYMENTS_FILENAME);
