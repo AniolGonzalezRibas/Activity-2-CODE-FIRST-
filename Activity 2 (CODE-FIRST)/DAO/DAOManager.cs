@@ -104,12 +104,29 @@ namespace Activity_2__CODE_FIRST_.DAO
             using (var reader = new StreamReader(fileName))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
-                var employees = csv.GetRecords<Employee>();
+                csv.Read();
+                csv.ReadHeader();
 
-                foreach (var employee in employees)
+
+                while (csv.Read())
                 {
+                    var employee = new Employee();
+
+                    employee.EmployeeNumber = csv.GetField<int>("employeeNumber");
+                    employee.LastName = csv.GetField("lastName");
+                    employee.FirstName = csv.GetField("firstName");
+                    employee.Extension = csv.GetField("extension");
+                    employee.Email = csv.GetField("email");
+                    employee.OfficeCode = csv.GetField("officeCode");
+                    string reportsToString = csv.GetField("reportsTo");
+                    employee.ReportsTo = string.Equals(reportsToString, "NULL", StringComparison.OrdinalIgnoreCase) ? null : (int?)int.Parse(reportsToString);
+
+                    employee.JobTitle = csv.GetField("jobTitle");
+
                     AddEmployee(employee);
                 }
+
+                
             }
         }
 
@@ -201,14 +218,14 @@ namespace Activity_2__CODE_FIRST_.DAO
 
         public void ImportAll()
         {
-            ImportCustomers(CUSTOMERS_FILENAME);
+            //ImportProductLines(PRODUCTLINES_FILENAME);
+            //ImportProduct(PRODUCTS_FILENAME);
+            //ImportOffices(OFFICES_FILENAME);
             ImportEmployees(EMPLOYEES_FILENAME);
-            ImportOffices(OFFICES_FILENAME);
-            ImportOrderDetails(ORDERDETAILS_FILENAME);
-            ImportOrders(ORDERS_FILENAME);
+            ImportCustomers(CUSTOMERS_FILENAME);
             ImportPayments(PAYMENTS_FILENAME);
-            ImportProduct(PRODUCTS_FILENAME);
-            ImportProductLines(PRODUCTLINES_FILENAME);
+            ImportOrders(ORDERS_FILENAME);
+            ImportOrderDetails(ORDERDETAILS_FILENAME);
         }
     }
 } 

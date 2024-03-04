@@ -22,17 +22,15 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string Extension { get; set; }
         [Name("email")]
         public string Email { get; set; }
-        [ForeignKey(nameof(Office.OfficeCode))]
         [Name("officeCode")]
+        [ForeignKey(nameof(Office.OfficeCode))]
         public string OfficeCode { get; set; }
-        [Ignore]
         public Office Office { get; set; }
-        [ForeignKey(nameof(Employee.EmployeeNumber))]
         [Name("reportsTo")]
+        [ForeignKey(nameof(Employee.EmployeeNumber))]
         public int? ReportsTo { get; set; }
-        [Name("jobTitle")]
-        [Ignore]
         public Employee ReportedEmployee { get; set; }
+        [Name("jobTitle")]
         public string JobTitle { get; set; }
         
 
