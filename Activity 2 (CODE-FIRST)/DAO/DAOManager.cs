@@ -85,10 +85,19 @@ namespace Activity_2__CODE_FIRST_.DAO
             context.ProductLiness.Add(productLines);
             return context.SaveChanges() > 0;
         }
-        private static T ParseField<T>(string? value)
+        private static T? ParseField<T>(string? value) where T : struct
         {
-            return string.Equals(value, "NULL", StringComparison.OrdinalIgnoreCase) ? default : (T)Convert.ChangeType(value, typeof(T));
+            if (string.Equals(value, "NULL", StringComparison.OrdinalIgnoreCase))
+            {
+                return null;
+            }
+            else
+            {
+                return (T)Convert.ChangeType(value, typeof(T));
+            }
         }
+
+
 
         public void ImportCustomers(string fileName)
         {
@@ -102,19 +111,19 @@ namespace Activity_2__CODE_FIRST_.DAO
                 while (csv.Read())
                 {
                     var customer = new Customer();
-                    customer.CustomerNumber = ParseField<int>(csv.GetField("employeeNumber"));
-                    customer.CustomerName = ParseField<string>(csv.GetField("lastName"));
-                    customer.ContactLastName = ParseField<string>(csv.GetField("firstName"));
-                    customer.ContactFirstName = ParseField<string>(csv.GetField("extension"));
-                    customer.Phone = ParseField<string>(csv.GetField("email"));
-                    customer.AdressLine1 = ParseField<string>(csv.GetField("officeCode"));
-                    customer.AdressLine2 = ParseField<string>(csv.GetField("reportsTo"));
-                    customer.City = ParseField<string>(csv.GetField("jobTitle"));
-                    customer.State = ParseField<string>(csv.GetField("jobTitle"));
-                    customer.PostalCode = ParseField<string>(csv.GetField("jobTitle"));
-                    customer.Country = ParseField<string>(csv.GetField("jobTitle"));
-                    customer.SalesRepEmployeeNumber = ParseField<int>(csv.GetField("jobTitle"));
-                    customer.CreditLimit = ParseField<double>(csv.GetField("jobTitle"));
+                    customer.CustomerNumber = ParseField<int>(csv.GetField("customerNumber"));
+                    customer.CustomerName = ParseField<string>(csv.GetField("customerName"));
+                    customer.ContactLastName = ParseField<string>(csv.GetField("contactLastName"));
+                    customer.ContactFirstName = ParseField<string>(csv.GetField("contactFirstName"));
+                    customer.Phone = ParseField<string>(csv.GetField("phone"));
+                    customer.AdressLine1 = ParseField<string>(csv.GetField("addressLine1"));
+                    customer.AdressLine2 = ParseField<string>(csv.GetField("addressLine2"));
+                    customer.City = ParseField<string>(csv.GetField("city"));
+                    customer.State = ParseField<string>(csv.GetField("state"));
+                    customer.PostalCode = ParseField<string>(csv.GetField("postalCode"));
+                    customer.Country = ParseField<string>(csv.GetField("country"));
+                    customer.SalesRepEmployeeNumber = ParseField<int>(csv.GetField("salesRepEmployeeNumber"));
+                    customer.CreditLimit = ParseField<double>(csv.GetField("creditLimit"));
                     AddCustomer(customer);
                 }
             }
@@ -306,10 +315,10 @@ namespace Activity_2__CODE_FIRST_.DAO
 
         public void ImportAll()
         {
-            ImportProductLines(PRODUCTLINES_FILENAME);
-            ImportProduct(PRODUCTS_FILENAME);
-            ImportOffices(OFFICES_FILENAME);
-            ImportEmployees(EMPLOYEES_FILENAME);
+            //ImportProductLines(PRODUCTLINES_FILENAME);
+            //ImportProduct(PRODUCTS_FILENAME);
+            //ImportOffices(OFFICES_FILENAME);
+            //ImportEmployees(EMPLOYEES_FILENAME);
             ImportCustomers(CUSTOMERS_FILENAME);
             ImportPayments(PAYMENTS_FILENAME);
             ImportOrders(ORDERS_FILENAME);
