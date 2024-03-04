@@ -24,7 +24,6 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string? Email { get; set; }
         [ForeignKey("Office")]
         public string? OfficeCode { get; set; }
-        public Office? Office { get; set; }
         [ForeignKey("ReportedEmployee")]
         [Name("reportsTo")]
         public int? ReportsTo { get; set; }
@@ -32,8 +31,12 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public string? JobTitle { get; set; }
 
         [Ignore]
+        public Office? Office { get; set; }
+        [Ignore]
         public Employee? ReportedEmployee { get; set; }
+        [Ignore]
         public ICollection<Customer>? Customers { get; set; }
+        [Ignore]
         public ICollection<Employee>? Employees { get; set; }
     }
 }

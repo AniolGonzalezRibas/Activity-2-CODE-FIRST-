@@ -35,6 +35,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
 
         [Ignore]
         public Customer Customer { get; set; }
+        [Ignore]
         public ICollection<OrderDetail> OrdersDetails { get; set; }
 
     }

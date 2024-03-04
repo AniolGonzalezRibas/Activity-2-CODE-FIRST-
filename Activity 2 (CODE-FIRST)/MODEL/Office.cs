@@ -30,6 +30,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [Name("territory")]
         public string? Territory { get; set; }
 
+        [Ignore]
         public ICollection<Employee>? Employees { get; set; }
     }
 }

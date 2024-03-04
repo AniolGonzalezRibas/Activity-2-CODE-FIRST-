@@ -24,6 +24,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [Name("image")]
         public string? Image { get; set; }
 
+        [Ignore]
         public ICollection<Product>? Products { get; set; }
 
     }

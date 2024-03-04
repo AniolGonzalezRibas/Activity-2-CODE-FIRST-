@@ -42,7 +42,9 @@ namespace Activity_2__CODE_FIRST_.MODEL
 
         [Ignore]
         public Employee? Employee { get; set; }
+        [Ignore]
         public ICollection<Payment>? Payments { get; set; }
+        [Ignore]
         public ICollection<Order>? Orders { get; set; }
     }
 }

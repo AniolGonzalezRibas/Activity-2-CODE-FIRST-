@@ -40,6 +40,7 @@ namespace Activity_2__CODE_FIRST_.MODEL
 
         [Ignore]
         public ProductLines? ProductLines { get; set; }
+        [Ignore]
         public ICollection<OrderDetail>? OrdersDetails { get; set; }
     }
 }
