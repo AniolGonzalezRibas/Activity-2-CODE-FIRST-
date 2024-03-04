@@ -12,22 +12,24 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         [Name("officeCode")]
-        public string OfficeCode { get; set; }
+        public string? OfficeCode { get; set; }
         [Name("city")]
-        public string City { get; set; }
+        public string? City { get; set; }
         [Name("phone")]
-        public string Phone {  get; set; }
+        public string? Phone {  get; set; }
         [Name("addressLine1")]
-        public string AdressLine1 { get; set; }
+        public string? AdressLine1 { get; set; }
         [Name("addressLine2")]
-        public string AdressLine2 { get; set; }
+        public string? AdressLine2 { get; set; }
         [Name("state")]
-        public string State { get; set; }
+        public string? State { get; set; }
         [Name("country")]
-        public string Country { get; set; }
+        public string? Country { get; set; }
         [Name("postalCode")]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
         [Name("territory")]
-        public string Territory { get; set; }
+        public string? Territory { get; set; }
+
+        public ICollection<Employee>? Employees { get; set; }
     }
 }

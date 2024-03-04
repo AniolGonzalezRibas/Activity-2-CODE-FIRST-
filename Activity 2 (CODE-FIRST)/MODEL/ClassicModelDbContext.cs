@@ -24,9 +24,11 @@ namespace Activity_2__CODE_FIRST_.MODEL
         {
             modelBuilder.Entity<OrderDetail>()
                 .HasKey(o => new { o.OrderNumber, o.ProductCode });
+
             modelBuilder.Entity<Payment>()
                 .HasKey(o => new { o.CustomerNumber, o.CheckNumber });
         }
+
 
 
         public virtual DbSet<Customer> Customers { get; set; }

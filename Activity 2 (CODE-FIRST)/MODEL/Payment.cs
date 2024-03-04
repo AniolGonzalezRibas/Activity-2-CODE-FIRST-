@@ -13,18 +13,19 @@ namespace Activity_2__CODE_FIRST_.MODEL
     public class Payment
     {
         [Key]
-        [ForeignKey(nameof(Customer.CustomerNumber))]
+        [ForeignKey("Customer")]
         [Name("customerNumber")]
-        public int CustomerNumber { get; set; }
+        public int? CustomerNumber { get; set; }
         [Key]
         [Name("checkNumber")]
-        public string CheckNumber { get; set; }
+        public string? CheckNumber { get; set; }
         [Name("paymentDate")]
-        public string PaymentDate { get; set; }
+        public string? PaymentDate { get; set; }
         [Name("amount")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
+
         [Ignore]
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
 
     }
 }

@@ -14,25 +14,28 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         [Name("orderNumber")]
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         [Column(TypeName = "date")]
         [Name("orderDate")]
-        public DateTime OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
         [Required]
         [Column(TypeName = "date")]
         [Name("requiredDate")]
-        public DateTime RequiredDate { get; set; }
+        public DateTime? RequiredDate { get; set; }
         [Column(TypeName = "date")]
         [Name("shippedDate")]
-        public DateTime ShippedDate { get; set; }
+        public DateTime? ShippedDate { get; set; }
         [Name("status")]
-        public string Status { get; set; }
+        public string? Status { get; set; }
         [Name("comments")]
-        public string Comments { get; set; }
-        [ForeignKey(nameof(Customer.CustomerNumber))]
+        public string? Comments { get; set; }
+        [ForeignKey("Customer")]
         [Name("customerNumber")]
         public int CustomerNumber { get; set; }
+
         [Ignore]
         public Customer Customer { get; set; }
+        public ICollection<OrderDetail> OrdersDetails { get; set; }
+
     }
 }

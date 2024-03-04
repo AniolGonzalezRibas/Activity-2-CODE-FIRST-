@@ -13,32 +13,33 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         [Name("productCode")]
-        public string ProductCode { get; set; }
+        public string? ProductCode { get; set; }
 
         [Name("productName")]
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         [Name("productLine")]
-        [ForeignKey(nameof(ProductLines.ProductLine))]
-        public string ProductLine {  get; set; }
-
-        [Ignore]
-        public ProductLines ProductLines { get; set; }
+        [ForeignKey("ProductLines")]
+        public string? ProductLine {  get; set; }
 
         [Name("productScale")]
-        public string ProductScale { get; set; }
+        public string? ProductScale { get; set; }
 
         [Name("productVendor")]
-        public string ProductVendor { get; set; }
+        public string? ProductVendor { get; set; }
 
         [Name("productDescription")]
-        public string ProductDescription { get; set; }
+        public string? ProductDescription { get; set; }
         [Name("quantityInStock")]
-        public short QuantityStock { get; set; }
+        public short? QuantityStock { get; set; }
         [Name("buyPrice")]
-        public double BuyPrice { get; set; }
+        public double? BuyPrice { get; set; }
 
         [Name("MSRP")]
-        public double MSRP { get; set; }
+        public double? MSRP { get; set; }
+
+        [Ignore]
+        public ProductLines? ProductLines { get; set; }
+        public ICollection<OrderDetail>? OrdersDetails { get; set; }
     }
 }

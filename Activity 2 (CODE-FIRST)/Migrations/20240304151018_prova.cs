@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Activity_2__CODE_FIRST_.Migrations
 {
-    public partial class primera : Migration
+    public partial class prova : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,6 +13,7 @@ namespace Activity_2__CODE_FIRST_.Migrations
                 columns: table => new
                 {
                     OfficeCode = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: false),
                     Phone = table.Column<string>(nullable: false),
                     AdressLine1 = table.Column<string>(nullable: false),
                     AdressLine2 = table.Column<string>(nullable: false),
@@ -23,20 +25,6 @@ namespace Activity_2__CODE_FIRST_.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Offices", x => x.OfficeCode);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Payments",
-                columns: table => new
-                {
-                    CustomerNumber = table.Column<int>(nullable: false),
-                    CheckNumber = table.Column<string>(nullable: false),
-                    PaymentDate = table.Column<string>(nullable: false),
-                    Amount = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Payments", x => new { x.CustomerNumber, x.CheckNumber });
                 });
 
             migrationBuilder.CreateTable(
@@ -65,7 +53,8 @@ namespace Activity_2__CODE_FIRST_.Migrations
                     Email = table.Column<string>(nullable: false),
                     OfficeCode = table.Column<string>(nullable: false),
                     OfficeCode1 = table.Column<string>(nullable: false),
-                    ReportsTo = table.Column<int>(nullable: false),
+                    ReportsTo = table.Column<int>(nullable: true),
+                    ReportedEmployeeEmployeeNumber = table.Column<int>(nullable: false),
                     JobTitle = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -77,13 +66,19 @@ namespace Activity_2__CODE_FIRST_.Migrations
                         principalTable: "Offices",
                         principalColumn: "OfficeCode",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Employees_Employees_ReportedEmployeeEmployeeNumber",
+                        column: x => x.ReportedEmployeeEmployeeNumber,
+                        principalTable: "Employees",
+                        principalColumn: "EmployeeNumber",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
-                    ProducCode = table.Column<string>(nullable: false),
+                    ProductCode = table.Column<string>(nullable: false),
                     ProductName = table.Column<string>(nullable: false),
                     ProductLine = table.Column<string>(nullable: false),
                     ProductLinesProductLine = table.Column<string>(nullable: false),
@@ -96,7 +91,7 @@ namespace Activity_2__CODE_FIRST_.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.ProducCode);
+                    table.PrimaryKey("PK_Products", x => x.ProductCode);
                     table.ForeignKey(
                         name: "FK_Products_ProductLiness_ProductLinesProductLine",
                         column: x => x.ProductLinesProductLine,
@@ -120,6 +115,7 @@ namespace Activity_2__CODE_FIRST_.Migrations
                     City = table.Column<string>(nullable: false),
                     State = table.Column<string>(nullable: false),
                     PostalCode = table.Column<string>(nullable: false),
+                    Country = table.Column<string>(nullable: false),
                     SalesRepEmployeeNumber = table.Column<int>(nullable: false),
                     EmployeeNumber = table.Column<int>(nullable: false),
                     CreditLimit = table.Column<double>(nullable: false)
@@ -136,36 +132,14 @@ namespace Activity_2__CODE_FIRST_.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderDetails",
-                columns: table => new
-                {
-                    OrderNumber = table.Column<int>(nullable: false),
-                    ProductCode = table.Column<string>(nullable: false),
-                    ProductProducCode = table.Column<string>(nullable: false),
-                    QuantityOrdered = table.Column<int>(nullable: false),
-                    PriceEach = table.Column<double>(nullable: false),
-                    OrderLineNumber = table.Column<short>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderDetails", x => new { x.OrderNumber, x.ProductCode });
-                    table.ForeignKey(
-                        name: "FK_OrderDetails_Products_ProductProducCode",
-                        column: x => x.ProductProducCode,
-                        principalTable: "Products",
-                        principalColumn: "ProducCode",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
                     OrderNumber = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    OrderDate = table.Column<string>(nullable: false),
-                    RequiredDate = table.Column<string>(nullable: false),
-                    ShippedDate = table.Column<string>(nullable: false),
+                    OrderDate = table.Column<DateTime>(type: "date", nullable: false),
+                    RequiredDate = table.Column<DateTime>(type: "date", nullable: false),
+                    ShippedDate = table.Column<DateTime>(type: "date", nullable: false),
                     Status = table.Column<string>(nullable: false),
                     Comments = table.Column<string>(nullable: false),
                     CustomerNumber = table.Column<int>(nullable: false),
@@ -182,6 +156,53 @@ namespace Activity_2__CODE_FIRST_.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    CustomerNumber = table.Column<int>(nullable: false),
+                    CheckNumber = table.Column<string>(nullable: false),
+                    PaymentDate = table.Column<string>(nullable: false),
+                    Amount = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => new { x.CustomerNumber, x.CheckNumber });
+                    table.ForeignKey(
+                        name: "FK_Payments_Customers_CustomerNumber",
+                        column: x => x.CustomerNumber,
+                        principalTable: "Customers",
+                        principalColumn: "CustomerNumber",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderDetails",
+                columns: table => new
+                {
+                    OrderNumber = table.Column<int>(nullable: false),
+                    ProductCode = table.Column<string>(nullable: false),
+                    QuantityOrdered = table.Column<int>(nullable: false),
+                    PriceEach = table.Column<double>(nullable: false),
+                    OrderLineNumber = table.Column<short>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderDetails", x => new { x.OrderNumber, x.ProductCode });
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Orders_OrderNumber",
+                        column: x => x.OrderNumber,
+                        principalTable: "Orders",
+                        principalColumn: "OrderNumber",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderDetails_Products_ProductCode",
+                        column: x => x.ProductCode,
+                        principalTable: "Products",
+                        principalColumn: "ProductCode",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_EmployeeNumber",
                 table: "Customers",
@@ -193,9 +214,14 @@ namespace Activity_2__CODE_FIRST_.Migrations
                 column: "OfficeCode1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_ProductProducCode",
+                name: "IX_Employees_ReportedEmployeeEmployeeNumber",
+                table: "Employees",
+                column: "ReportedEmployeeEmployeeNumber");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderDetails_ProductCode",
                 table: "OrderDetails",
-                column: "ProductProducCode");
+                column: "ProductCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerNumber1",
@@ -214,10 +240,10 @@ namespace Activity_2__CODE_FIRST_.Migrations
                 name: "OrderDetails");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Payments");
 
             migrationBuilder.DropTable(
-                name: "Payments");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");

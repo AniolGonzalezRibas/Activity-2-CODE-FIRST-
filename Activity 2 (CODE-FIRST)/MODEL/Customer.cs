@@ -13,33 +13,36 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         [Name("customerNumber")]
-        public int CustomerNumber { get; set; }
+        public int? CustomerNumber { get; set; }
         [Name("customerName")]
-        public string CustomerName { get; set; }
+        public string? CustomerName { get; set; }
         [Name("contactLastName")]
-        public string ContactLastName {  get; set; }
+        public string? ContactLastName {  get; set; }
         [Name("contactFirstName")]
-        public string ContactFirstName { get; set; }
+        public string? ContactFirstName { get; set; }
         [Name("phone")]
-        public string Phone {  get; set; }
+        public string? Phone {  get; set; }
         [Name("addressLine1")]
-        public string AdressLine1 { get; set; }
+        public string? AdressLine1 { get; set; }
         [Name("addressLine2")]
-        public string AdressLine2 { get; set; }
+        public string? AdressLine2 { get; set; }
         [Name("city")]
-        public string City { get; set; }
+        public string? City { get; set; }
         [Name("state")]
-        public string State { get; set; }
+        public string? State { get; set; }
         [Name("postalCode")]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
         [Name("country")]
-        public string Country { get; set; }
-        [ForeignKey(nameof(Employee.ReportsTo))]
+        public string? Country { get; set; }
+        [ForeignKey("Employee")]
         [Name("salesRepEmployeeNumber")]
-        public int SalesRepEmployeeNumber { get; set; }   
-        [Ignore]
-        public Employee Employee { get; set; }
+        public int? SalesRepEmployeeNumber { get; set; }   
         [Name("creditLimit")]
-        public double CreditLimit { get; set; }
+        public double? CreditLimit { get; set; }
+
+        [Ignore]
+        public Employee? Employee { get; set; }
+        public ICollection<Payment>? Payments { get; set; }
+        public ICollection<Order>? Orders { get; set; }
     }
 }

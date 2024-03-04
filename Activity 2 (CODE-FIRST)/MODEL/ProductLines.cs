@@ -13,16 +13,18 @@ namespace Activity_2__CODE_FIRST_.MODEL
     {
         [Key]
         [Name("productLine")]
-        public string ProductLine { get; set; }
+        public string? ProductLine { get; set; }
 
         [Name("textDescription")]
-        public string TextDescription { get; set; }
+        public string? TextDescription { get; set; }
 
         [Name("htmlDescription")]
-        public string HtmlDescription { get; set; }
+        public string? HtmlDescription { get; set; }
 
         [Name("image")]
-        public string Image { get; set; }
+        public string? Image { get; set; }
+
+        public ICollection<Product>? Products { get; set; }
 
     }
 }

@@ -107,23 +107,16 @@ namespace Activity_2__CODE_FIRST_.Migrations
 
                     b.Property<string>("OfficeCode")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("OfficeCode1")
-                        .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.Property<int>("ReportedEmployeeEmployeeNumber")
-                        .HasColumnType("int");
 
                     b.Property<int?>("ReportsTo")
                         .HasColumnType("int");
 
                     b.HasKey("EmployeeNumber");
 
-                    b.HasIndex("OfficeCode1");
+                    b.HasIndex("OfficeCode");
 
-                    b.HasIndex("ReportedEmployeeEmployeeNumber");
+                    b.HasIndex("ReportsTo");
 
                     b.ToTable("Employees");
                 });
@@ -330,15 +323,13 @@ namespace Activity_2__CODE_FIRST_.Migrations
                 {
                     b.HasOne("Activity_2__CODE_FIRST_.MODEL.Office", "Office")
                         .WithMany()
-                        .HasForeignKey("OfficeCode1")
+                        .HasForeignKey("OfficeCode")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Activity_2__CODE_FIRST_.MODEL.Employee", "ReportedEmployee")
                         .WithMany()
-                        .HasForeignKey("ReportedEmployeeEmployeeNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ReportsTo");
                 });
 
             modelBuilder.Entity("Activity_2__CODE_FIRST_.MODEL.Order", b =>

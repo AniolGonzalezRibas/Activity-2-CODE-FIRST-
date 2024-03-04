@@ -12,22 +12,23 @@ namespace Activity_2__CODE_FIRST_.MODEL
     public class OrderDetail
     {
         [Key]
-        [ForeignKey(nameof(Order.OrderNumber))]
+        [ForeignKey("Order")]
         [Name("orderNumber")]
-        public int OrderNumber { get; set; }
+        public int? OrderNumber { get; set; }
         [Key]
-        [ForeignKey(nameof(Product.ProductCode))]
+        [ForeignKey("Product")]
         [Name("productCode")]
-        public string ProductCode { get; set; }
-        [Ignore]
-        public Product Product { get; set; }
-        [Ignore]
-        public Order Order { get; set; }
+        public string? ProductCode { get; set; }
         [Name("quantityOrdered")]
-        public int QuantityOrdered { get; set; }
+        public int? QuantityOrdered { get; set; }
         [Name("priceEach")]
-        public double PriceEach { get; set; }
+        public double? PriceEach { get; set; }
         [Name("orderLineNumber")]
-        public short OrderLineNumber { get; set; }
+        public short? OrderLineNumber { get; set; }
+
+        [Ignore]
+        public Product? Product { get; set; }
+        [Ignore]
+        public Order? Order { get; set; }
     }
 }
