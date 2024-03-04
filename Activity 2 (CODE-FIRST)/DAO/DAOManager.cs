@@ -85,16 +85,22 @@ namespace Activity_2__CODE_FIRST_.DAO
             context.ProductLiness.Add(productLines);
             return context.SaveChanges() > 0;
         }
-        private static T? ParseField<T>(string? value) where T : struct
+        public static T? ParseField<T>(string value) where T : struct
         {
             if (string.Equals(value, "NULL", StringComparison.OrdinalIgnoreCase))
             {
-                return null;
+                return null; // Devuelve null para tipos de valor anulables
             }
             else
             {
+                // Usa Convert.ChangeType para convertir el valor al tipo correspondiente
                 return (T)Convert.ChangeType(value, typeof(T));
             }
+        }
+
+        public static string ParseField(string value)
+        {
+            return string.Equals(value, "NULL", StringComparison.OrdinalIgnoreCase) ? null : value;
         }
 
 
@@ -112,16 +118,16 @@ namespace Activity_2__CODE_FIRST_.DAO
                 {
                     var customer = new Customer();
                     customer.CustomerNumber = ParseField<int>(csv.GetField("customerNumber"));
-                    customer.CustomerName = ParseField<string>(csv.GetField("customerName"));
-                    customer.ContactLastName = ParseField<string>(csv.GetField("contactLastName"));
-                    customer.ContactFirstName = ParseField<string>(csv.GetField("contactFirstName"));
-                    customer.Phone = ParseField<string>(csv.GetField("phone"));
-                    customer.AdressLine1 = ParseField<string>(csv.GetField("addressLine1"));
-                    customer.AdressLine2 = ParseField<string>(csv.GetField("addressLine2"));
-                    customer.City = ParseField<string>(csv.GetField("city"));
-                    customer.State = ParseField<string>(csv.GetField("state"));
-                    customer.PostalCode = ParseField<string>(csv.GetField("postalCode"));
-                    customer.Country = ParseField<string>(csv.GetField("country"));
+                    customer.CustomerName = ParseField(csv.GetField("customerName"));
+                    customer.ContactLastName = ParseField(csv.GetField("contactLastName"));
+                    customer.ContactFirstName = ParseField(csv.GetField("contactFirstName"));
+                    customer.Phone = ParseField(csv.GetField("phone"));
+                    customer.AdressLine1 = ParseField(csv.GetField("addressLine1"));
+                    customer.AdressLine2 = ParseField(csv.GetField("addressLine2"));
+                    customer.City = ParseField(csv.GetField("city"));
+                    customer.State = ParseField(csv.GetField("state"));
+                    customer.PostalCode = ParseField(csv.GetField("postalCode"));
+                    customer.Country = ParseField(csv.GetField("country"));
                     customer.SalesRepEmployeeNumber = ParseField<int>(csv.GetField("salesRepEmployeeNumber"));
                     customer.CreditLimit = ParseField<double>(csv.GetField("creditLimit"));
                     AddCustomer(customer);
@@ -143,13 +149,13 @@ namespace Activity_2__CODE_FIRST_.DAO
                     var employee = new Employee();
 
                     employee.EmployeeNumber = ParseField<int>(csv.GetField("employeeNumber"));
-                    employee.LastName = ParseField<string>(csv.GetField("lastName"));
-                    employee.FirstName = ParseField<string>(csv.GetField("firstName"));
-                    employee.Extension = ParseField<string>(csv.GetField("extension"));
-                    employee.Email = ParseField<string>(csv.GetField("email"));
-                    employee.OfficeCode = ParseField<string>(csv.GetField("officeCode"));
-                    employee.ReportsTo = ParseField<int?>(csv.GetField("reportsTo"));
-                    employee.JobTitle = ParseField<string>(csv.GetField("jobTitle"));
+                    employee.LastName = ParseField(csv.GetField("lastName"));
+                    employee.FirstName = ParseField(csv.GetField("firstName"));
+                    employee.Extension = ParseField(csv.GetField("extension"));
+                    employee.Email = ParseField(csv.GetField("email"));
+                    employee.OfficeCode = ParseField(csv.GetField("officeCode"));
+                    employee.ReportsTo = ParseField<int>(csv.GetField("reportsTo"));
+                    employee.JobTitle = ParseField(csv.GetField("jobTitle"));
                     AddEmployee(employee);
                 }
 
@@ -169,15 +175,15 @@ namespace Activity_2__CODE_FIRST_.DAO
                 while (csv.Read())
                 {
                     var office = new Office();
-                    office.OfficeCode = ParseField<string>(csv.GetField("officeCode"));
-                    office.City = ParseField<string>(csv.GetField("city"));
-                    office.Phone = ParseField<string>(csv.GetField("phone"));
-                    office.AdressLine1 = ParseField<string>(csv.GetField("addressLine1"));
-                    office.AdressLine2 = ParseField<string>(csv.GetField("addressLine2"));
-                    office.State = ParseField<string>(csv.GetField("state"));
-                    office.Country = ParseField<string>(csv.GetField("country"));
-                    office.PostalCode = ParseField<string>(csv.GetField("postalCode"));
-                    office.Territory = ParseField<string>(csv.GetField("territory"));
+                    office.OfficeCode = ParseField(csv.GetField("officeCode"));
+                    office.City = ParseField(csv.GetField("city"));
+                    office.Phone = ParseField(csv.GetField("phone"));
+                    office.AdressLine1 = ParseField(csv.GetField("addressLine1"));
+                    office.AdressLine2 = ParseField(csv.GetField("addressLine2"));
+                    office.State = ParseField(csv.GetField("state"));
+                    office.Country = ParseField(csv.GetField("country"));
+                    office.PostalCode = ParseField(csv.GetField("postalCode"));
+                    office.Territory = ParseField(csv.GetField("territory"));
 
                     AddOffice(office);
                 }
@@ -198,7 +204,7 @@ namespace Activity_2__CODE_FIRST_.DAO
                 {
                     var orderDetail = new OrderDetail();
                     orderDetail.OrderNumber = ParseField<int>(csv.GetField("orderNumber"));
-                    orderDetail.ProductCode = ParseField<string>(csv.GetField("productCode"));
+                    orderDetail.ProductCode = ParseField(csv.GetField("productCode"));
                     orderDetail.QuantityOrdered = ParseField<int>(csv.GetField("quantityOrdered"));
                     orderDetail.PriceEach = ParseField<double>(csv.GetField("priceEach"));
                     orderDetail.OrderLineNumber = ParseField<short>(csv.GetField("orderLineNumber"));
@@ -225,8 +231,8 @@ namespace Activity_2__CODE_FIRST_.DAO
                     order.OrderDate = ParseField<DateTime>(csv.GetField("orderDate"));
                     order.RequiredDate = ParseField<DateTime>(csv.GetField("requiredDate"));
                     order.ShippedDate = ParseField<DateTime>(csv.GetField("shippedDate"));
-                    order.Status = ParseField<string>(csv.GetField("status"));
-                    order.Comments = ParseField<string>(csv.GetField("comments"));
+                    order.Status = ParseField(csv.GetField("status"));
+                    order.Comments = ParseField(csv.GetField("comments"));
                     order.CustomerNumber = ParseField<int>(csv.GetField("customerNumber"));
 
 
@@ -250,8 +256,8 @@ namespace Activity_2__CODE_FIRST_.DAO
                 {
                     var payment = new Payment();
                     payment.CustomerNumber = ParseField<int>(csv.GetField("customerNumber"));
-                    payment.CheckNumber = ParseField<string>(csv.GetField("checkNumber"));
-                    payment.PaymentDate = ParseField<string>(csv.GetField("paymentDate"));
+                    payment.CheckNumber = ParseField(csv.GetField("checkNumber"));
+                    payment.PaymentDate = ParseField(csv.GetField("paymentDate"));
                     payment.Amount = ParseField<double>(csv.GetField("amount"));
 
 
@@ -273,12 +279,12 @@ namespace Activity_2__CODE_FIRST_.DAO
                 while (csv.Read())
                 {
                     var product = new Product();
-                    product.ProductCode = ParseField<string>(csv.GetField("productCode"));
-                    product.ProductName = ParseField<string>(csv.GetField("productName"));
-                    product.ProductLine = ParseField<string>(csv.GetField("productLine"));
-                    product.ProductScale = ParseField<string>(csv.GetField("productScale"));
-                    product.ProductVendor = ParseField<string>(csv.GetField("productVendor"));
-                    product.ProductDescription = ParseField<string>(csv.GetField("productDescription"));
+                    product.ProductCode = ParseField(csv.GetField("productCode"));
+                    product.ProductName = ParseField(csv.GetField("productName"));
+                    product.ProductLine = ParseField(csv.GetField("productLine"));
+                    product.ProductScale = ParseField(csv.GetField("productScale"));
+                    product.ProductVendor = ParseField(csv.GetField("productVendor"));
+                    product.ProductDescription = ParseField(csv.GetField("productDescription"));
                     product.QuantityStock = ParseField<short>(csv.GetField("quantityInStock"));
                     product.BuyPrice = ParseField<double>(csv.GetField("buyPrice"));
                     product.MSRP = ParseField<double>(csv.GetField("MSRP"));
@@ -303,10 +309,10 @@ namespace Activity_2__CODE_FIRST_.DAO
                 while (csv.Read())
                 {
                     var productLine = new ProductLines();
-                    productLine.ProductLine = ParseField<string>(csv.GetField("productLine"));
-                    productLine.TextDescription = ParseField<string>(csv.GetField("textDescription"));
-                    productLine.HtmlDescription = ParseField<string>(csv.GetField("htmlDescription"));
-                    productLine.Image = ParseField<string>(csv.GetField("image"));
+                    productLine.ProductLine = ParseField(csv.GetField("productLine"));
+                    productLine.TextDescription = ParseField(csv.GetField("textDescription"));
+                    productLine.HtmlDescription = ParseField(csv.GetField("htmlDescription"));
+                    productLine.Image = ParseField(csv.GetField("image"));
                     
                     AddProductLine(productLine);
                 }
@@ -315,10 +321,10 @@ namespace Activity_2__CODE_FIRST_.DAO
 
         public void ImportAll()
         {
-            //ImportProductLines(PRODUCTLINES_FILENAME);
-            //ImportProduct(PRODUCTS_FILENAME);
-            //ImportOffices(OFFICES_FILENAME);
-            //ImportEmployees(EMPLOYEES_FILENAME);
+            ImportProductLines(PRODUCTLINES_FILENAME);
+            ImportProduct(PRODUCTS_FILENAME);
+            ImportOffices(OFFICES_FILENAME);
+            ImportEmployees(EMPLOYEES_FILENAME);
             ImportCustomers(CUSTOMERS_FILENAME);
             ImportPayments(PAYMENTS_FILENAME);
             ImportOrders(ORDERS_FILENAME);
