@@ -36,7 +36,9 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public Employee? ReportedEmployee { get; set; }
         [Ignore]
         public ICollection<Customer>? Customers { get; set; }
-        [Ignore]
-        public ICollection<Employee>? Employees { get; set; }
+
+        //Revisar si es 0,1 -> N o 0,1 -> 0,1
+        //[Ignore]
+        //public ICollection<Employee>? Employees { get; set; }
     }
 }
