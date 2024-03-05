@@ -70,6 +70,143 @@ namespace Activity_2__CODE_FIRST_.DAO
             return context.ProductLiness.ToList();
         }
 
+        public List<Payment> GetPaymentsByCustomer(Customer customer)
+        {
+            List<Payment> payments = context.Payments
+                .AsQueryable()
+                .Where(p => p.CustomerNumber == customer.CustomerNumber)
+                .Select(p => new Payment
+                {
+                    CustomerNumber = p.CustomerNumber,
+                    CheckNumber = p.CheckNumber,
+                    PaymentDate = p.PaymentDate,
+                    Amount = p.Amount,
+                    Customer = customer
+                })
+                .ToList();
+
+            return payments;
+        }
+        public List<Customer> GetCustomersWithPaymentsGreaterThan(double amount)
+        {
+            List<Customer> customers = context.Customers
+                .AsQueryable()
+                .Where(c => c.Payments != null && c.Payments.Any(p => p.Amount > amount))
+                .Select(c => new Customer
+                {
+                    CustomerNumber = c.CustomerNumber,
+                    CustomerName = c.CustomerName,
+                    ContactLastName = c.ContactLastName,
+                    ContactFirstName = c.ContactFirstName,
+                    Phone = c.Phone,
+                    AdressLine1 = c.AdressLine1,
+                    AdressLine2 = c.AdressLine2,
+                    City = c.City,
+                    State = c.State,
+                    PostalCode = c.PostalCode,
+                    Country = c.Country,
+                    SalesRepEmployeeNumber = c.SalesRepEmployeeNumber,
+                    CreditLimit = c.CreditLimit,
+                    Employee = c.Employee,
+                    Payments = c.Payments,
+                    Orders = c.Orders
+                })
+                .ToList();
+
+            return customers;
+        }
+        public List<Order> GetOrdersByYear(int year)
+        {
+            List<Order> orders = context.Orders
+                .AsQueryable()
+                .Where(o => o.OrderDate.HasValue && o.OrderDate.Value.Year == year)
+                .OrderBy(o => o.OrderDate)
+                .ToList();
+
+            return orders;
+        }
+        public List<Customer> GetCustomersByProductCode(string productCode)
+        {
+            List<Customer> customers = context.Customers
+                .AsQueryable()
+                .Where(c => c.Orders != null && c.Orders.Any(
+                       o => o.OrdersDetails != null && o.OrdersDetails.Any(
+                       od => od.ProductCode == productCode)))
+                .Select(c => new Customer
+                {
+                    CustomerNumber = c.CustomerNumber,
+                    CustomerName = c.CustomerName,
+                    ContactLastName = c.ContactLastName,
+                    ContactFirstName = c.ContactFirstName,
+                    Phone = c.Phone,
+                    AdressLine1 = c.AdressLine1,
+                    AdressLine2 = c.AdressLine2,
+                    City = c.City,
+                    State = c.State,
+                    PostalCode = c.PostalCode,
+                    Country = c.Country,
+                    SalesRepEmployeeNumber = c.SalesRepEmployeeNumber,
+                    CreditLimit = c.CreditLimit,
+                    Employee = c.Employee,
+                    Payments = c.Payments,
+                    Orders = c.Orders.Where(o => o.OrdersDetails != null && o.OrdersDetails.Any(od => od.ProductCode == productCode)).ToList(),
+                })
+                .ToList();
+
+            return customers;
+        }
+        public List<Employee> GetEmployeesWithSalesExceedingAmount(double amount)
+        {
+            List<Employee> employees = context.Employees
+                .AsQueryable()
+                .Where(e => e.Customers != null && e.Customers.Any(
+                       c => c.Payments != null && c.Payments.Sum(
+                       p => p.Amount) > amount))
+                .Select(e => new Employee
+                {
+                    EmployeeNumber = e.EmployeeNumber,
+                    LastName = e.LastName,
+                    FirstName = e.FirstName,
+                    Extension = e.Extension,
+                    Email = e.Email,
+                    OfficeCode = e.OfficeCode,
+                    ReportsTo = e.ReportsTo,
+                    JobTitle = e.JobTitle,
+                    Office = e.Office,
+                    ReportedEmployee = e.ReportedEmployee,
+                    Customers = e.Customers.Where(c => c.Payments != null && c.Payments.Sum(p => p.Amount) > amount).ToList(),
+                })
+                .ToList();
+
+            return employees;
+        }
+        public List<Employee> GetEmployeesInSameOfficeAsManager()
+        {
+            List<Employee> employees = context.Employees
+                .AsQueryable()
+                .Where(e => e.OfficeCode != null && e.ReportsTo != null && e.OfficeCode == e.ReportedEmployee.OfficeCode)
+                .Select(e => new Employee
+                {
+                    EmployeeNumber = e.EmployeeNumber,
+                    LastName = e.LastName,
+                    FirstName = e.FirstName,
+                    Extension = e.Extension,
+                    Email = e.Email,
+                    OfficeCode = e.OfficeCode,
+                    ReportsTo = e.ReportsTo,
+                    JobTitle = e.JobTitle,
+                    Office = e.Office,
+                    ReportedEmployee = e.ReportedEmployee,
+                    Customers = e.Customers
+                })
+                .ToList();
+
+            return employees;
+        }
+
+
+        #region addRegion
+
         public bool AddCustomer(Customer customer)
         {
             customer.Employee = context.Employees.Find(customer.SalesRepEmployeeNumber);
@@ -125,6 +262,10 @@ namespace Activity_2__CODE_FIRST_.DAO
             context.ProductLiness.Add(productLines);
             return context.SaveChanges() > 0;
         }
+
+        #endregion
+
+        #region importRegion
         public static T? ParseField<T>(string value) where T : struct
         {
             if (string.Equals(value, "NULL", StringComparison.OrdinalIgnoreCase))
@@ -370,6 +511,11 @@ namespace Activity_2__CODE_FIRST_.DAO
             ImportOrders(ORDERS_FILENAME);
             ImportOrderDetails(ORDERDETAILS_FILENAME);
         }
+
+        #endregion
+
+
+
     }
 } 
 
