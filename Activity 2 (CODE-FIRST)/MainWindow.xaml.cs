@@ -26,7 +26,7 @@ namespace Activity_2__CODE_FIRST_
             InitializeComponent();
             manager = DAOFactory.GetDAOManager();
 
-            //manager.ImportAll();
+            manager.ImportAll();
 
             dtgCustomers.ItemsSource = manager.GetCustomers();
             dtgEmployees.ItemsSource = manager.GetEmployees();
@@ -36,6 +36,14 @@ namespace Activity_2__CODE_FIRST_
             dtgPayments.ItemsSource = manager.GetPayments();
             dtgProducts.ItemsSource = manager.GetProducts();
             dtgProductLines.ItemsSource = manager.GetProductLines();
+
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    for (int j = 1; j <= 2; j++)
+            //    {
+            //        manager.AddSpecialPrice(i, $"Product{j}", 10.0 + (i * j)); // Asignar precios especiales variados
+            //    }
+            //}
         }
 
         private void btnGetCustomersByProductCode_Click(object sender, RoutedEventArgs e)

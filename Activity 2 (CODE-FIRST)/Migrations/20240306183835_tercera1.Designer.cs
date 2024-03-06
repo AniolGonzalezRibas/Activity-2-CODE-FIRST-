@@ -3,14 +3,16 @@ using System;
 using Activity_2__CODE_FIRST_.MODEL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Activity_2__CODE_FIRST_.Migrations
 {
     [DbContext(typeof(ClassicModelDbContext))]
-    partial class ClassicModelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240306183835_tercera1")]
+    partial class tercera1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,7 +270,7 @@ namespace Activity_2__CODE_FIRST_.Migrations
 
             modelBuilder.Entity("Activity_2__CODE_FIRST_.MODEL.SpecialPriceList", b =>
                 {
-                    b.Property<int>("SpecialPriceListId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -282,7 +284,7 @@ namespace Activity_2__CODE_FIRST_.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
-                    b.HasKey("SpecialPriceListId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
