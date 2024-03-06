@@ -21,15 +21,24 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Product Code"  Margin="0,0,0,10"/>
-                        <TextBox x:Name="txtCustumerProductCodeFilter"/>
-                        <Button Name="btnGetCustomersByProductCode" Content="Search" Click="btnGetCustomersByProductCode_Click"/>
+                    <StackPanel   VerticalAlignment="Center">
+                        <TextBlock Text="Customers By Product Code"  Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtCustumerProductCodeFilter" Margin="10"/>
+                        <Button Name="btnGetCustomersByProductCode" Content="Search" Click="btnGetCustomersByProductCode_Click" Foreground="White"/>
                     </StackPanel>
-                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"> 
-                        <TextBlock Text="Price greather than"  Margin="0,0,0,10"/>
+                    <StackPanel VerticalAlignment="Center" Grid.Row="1">
+                        <TextBlock Text="Customers With Payments Greater Than"  Margin="0,0,0,10"/>
                         <TextBox x:Name="txtCustumerPriceFilter"/>
-                        <Button Name="btnGetCustomersWithPaymentsGreaterThan" Content="Search" Click="btnGetCustomersWithPaymentsGreaterThan_Click"/>
+                        <Button Name="btnGetCustomersWithPaymentsGreaterThan" Content="Search" Click="btnGetCustomersWithPaymentsGreaterThan_Click" Foreground="White"/>
+
+                    </StackPanel>
+                    <StackPanel   VerticalAlignment="Center" Grid.Row="2">
+                        <TextBlock Text="Customers With Overdue Payments"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetCustomersWithOverduePayments" Content="Search" Click="btnGetCustomersWithOverduePayments_Click" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Grid.Row="3">
+                        <TextBlock Text="Customers With Most Orders"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetCustomersWithMostOrders" Content="Search" Click="btnGetCustomersWithMostOrders_Click"  Foreground="White"/>
 
                     </StackPanel>
                 </Grid>
@@ -50,14 +59,19 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Product Code"  Margin="0,0,0,10"/>
+                    <StackPanel  VerticalAlignment="Center">
+                        <TextBlock Text="Get Employees With Sales Exceeding Amount"  Margin="0,0,0,10"/>
                         <TextBox x:Name="txtSalesAmount"/>
-                        <Button Name="btnGetEmployeesWithSalesExceedingAmount" Content="Search" Click="btnGetEmployeesWithSalesExceedingAmount_Click"/>
+                        <Button Name="btnGetEmployeesWithSalesExceedingAmount" Content="Search" Click="btnGetEmployeesWithSalesExceedingAmount_Click" Foreground="White"/>
                     </StackPanel>
-                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
-                        <TextBlock Text="Price greather than"  Margin="0,0,0,10"/>
-                        <Button Name="btnGetEmployeesInSameOfficeAsManager" Content="Search" Click="btnGetEmployeesInSameOfficeAsManager_Click"/>
+                    <StackPanel  VerticalAlignment="Center" Grid.Row="1">
+                        <TextBlock Text="Get Employees In Same Office As Manager"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetEmployeesInSameOfficeAsManager" Content="Search" Click="btnGetEmployeesInSameOfficeAsManager_Click" Foreground="White"/>
+
+                    </StackPanel>
+                    <StackPanel  VerticalAlignment="Center" Grid.Row="2">
+                        <TextBlock Text="Get Employees With Highest Sales"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetEmployeesWithHighestSales" Content="Search" Click="btnGetEmployeesWithHighestSales_Click" Foreground="White"/>
 
                     </StackPanel>
                 </Grid>
@@ -84,10 +98,14 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Year"  Margin="0,0,0,10"/>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Get Orders By Year"  Margin="0,0,0,10"/>
                         <TextBox x:Name="txtYear"/>
-                        <Button Name="btnGetOrdersByYear" Content="Search" Click="btnGetOrdersByYear_Click"/>
+                        <Button Name="btnGetOrdersByYear" Content="Search" Click="btnGetOrdersByYear_Click" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Text="Get Orders By Year"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetOrdersExceedingShippingDeadline" Content="Search" Click="btnGetOrdersExceedingShippingDeadline_Click"  Foreground="White"/>
                     </StackPanel>
                 </Grid>
                 <DataGrid x:Name="dtgOrders" IsReadOnly="True" Background="AliceBlue"/>
@@ -113,10 +131,10 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Customer Number"  Margin="0,0,0,10"/>
                         <TextBox x:Name="txtCustomerNumber"/>
-                        <Button Name="btnGetPaymentsByCustomer" Content="Search" Click="btnGetPaymentsByCustomer_Click"/>
+                        <Button Name="btnGetPaymentsByCustomer" Content="Search" Click="btnGetPaymentsByCustomer_Click" Foreground="White"/>
                     </StackPanel>
                 </Grid>
                 <DataGrid x:Name="dtgPayments" IsReadOnly="True" Background="AliceBlue"/>
@@ -124,6 +142,27 @@
         </TabItem>
         <TabItem Header="Products">
             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid DockPanel.Dock="Right" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel   VerticalAlignment="Center">
+                        <TextBlock Text="Get Best Selling Products"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetBestSellingProducts" Content="Search" Click="btnGetBestSellingProducts_Click" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Text="Ge tProducts By Profit Margin"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetProductsByProfitMargin" Content="Search" Click="btnGetProductsByProfitMargin_Click" Foreground="White"/>
+                    </StackPanel>
+                </Grid>
                 <DataGrid x:Name="dtgProducts" IsReadOnly="True" Background="AliceBlue"/>
             </Grid>
         </TabItem>

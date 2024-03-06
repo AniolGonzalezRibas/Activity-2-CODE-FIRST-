@@ -130,5 +130,35 @@ namespace Activity_2__CODE_FIRST_
         {
 
         }
+
+        private void btnGetCustomersWithOverduePayments_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetCustomersWithMostOrders_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetBestSellingProducts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetProductsByProfitMargin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetEmployeesWithHighestSales_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetOrdersExceedingShippingDeadline_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
