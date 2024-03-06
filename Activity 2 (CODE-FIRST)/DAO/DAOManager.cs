@@ -335,6 +335,29 @@ namespace Activity_2__CODE_FIRST_.DAO
             return context.SaveChanges() > 0;
         }
 
+        public bool AddSpecialPrice(int customerId, string productId, double price)
+        {
+            try
+            {
+                var specialPrice = new SpecialPriceList
+                {
+                    CustomerId = customerId,
+                    ProductId = productId,
+                    Price = price
+                };
+
+                context.SpecialPriceLists.Add(specialPrice);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al agregar precio especial: {ex.Message}");
+                return false;
+            }
+        }
+
+
         #endregion
 
         #region importRegion

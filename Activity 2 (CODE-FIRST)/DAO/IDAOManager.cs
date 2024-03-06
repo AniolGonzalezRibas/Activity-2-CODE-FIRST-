@@ -12,7 +12,9 @@ namespace Activity_2__CODE_FIRST_.DAO
         public bool AddPayment(Payment payment);
         public bool AddOrder(Order order);
         public bool AddOrderDetail(OrderDetail orderDetail);
-    
+        public bool AddSpecialPrice(int customerId, string productId, double price);
+
+
         public void ImportProductLines(string fileName);
         public void ImportProduct(string fileName);
         public void ImportOffices(string fileName);
