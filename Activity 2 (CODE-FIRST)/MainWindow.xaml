@@ -120,7 +120,7 @@
                         <Button Name="btnGetOrdersByYear" Content="Search" Click="btnGetOrdersByYear_Click" Foreground="White"/>
                     </StackPanel>
                     <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                        <TextBlock Text="Get Orders By Year"  Margin="0,0,0,10"/>
+                        <TextBlock Text="Get Orders Exceeding Shipping Deadline"  Margin="0,0,0,10"/>
                         <Button Name="btnGetOrdersExceedingShippingDeadline" Content="Search" Click="btnGetOrdersExceedingShippingDeadline_Click"  Foreground="White"/>
                     </StackPanel>
                 </Grid>
