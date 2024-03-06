@@ -32,5 +32,11 @@ namespace Activity_2__CODE_FIRST_.DAO
         public List<Payment> GetPayments();
         public List<Product> GetProducts();
         public List<ProductLines> GetProductLines();
+        public List<Payment> GetPaymentsByCustomer(Customer customer);
+        public List<Customer> GetCustomersWithPaymentsGreaterThan(double amount);
+        public List<Order> GetOrdersByYear(int year);
+        public List<Customer> GetCustomersByProductCode(string productCode);
+        public List<Employee> GetEmployeesWithSalesExceedingAmount(double amount);
+        public List<Employee> GetEmployeesInSameOfficeAsManager();
     }
 }

@@ -38,6 +38,8 @@ namespace Activity_2__CODE_FIRST_
             dtgProductLines.ItemsSource = manager.GetProductLines();
         }
 
+
+
         private void btnCustomersFilter_Click(object sender, RoutedEventArgs e)
         {
 
@@ -78,5 +80,22 @@ namespace Activity_2__CODE_FIRST_
 
         }
 
+        private void btnCustomerFilter_Click(object sender, RoutedEventArgs e)
+        {
+            List<Customer> list = new List<Customer>();
+            if (!string.IsNullOrWhiteSpace(txtCustumerProductCodeFilter.Text))
+            {
+                list = manager.GetCustomersByProductCode(txtCustumerProductCodeFilter.Text);
+            }
+            if (!string.IsNullOrWhiteSpace(txtCustumerPriceFilter.Text) )
+            {
+                list = manager.GetCustomersWithPaymentsGreaterThan(Convert.ToInt32(txtCustumerPriceFilter.Text));
+            }
+            else
+                txtCustumerPriceFilter.Text = string.Empty;
+
+
+            dtgCustomers.ItemsSource = list;
+        }
     }
 }
