@@ -70,18 +70,18 @@ namespace Activity_2__CODE_FIRST_.DAO
             return context.ProductLiness.ToList();
         }
 
-        public List<Payment> GetPaymentsByCustomer(Customer customer)
+        public List<Payment> GetPaymentsByCustomer(int customerNumber)
         {
             List<Payment> payments = context.Payments
                 .AsQueryable()
-                .Where(p => p.CustomerNumber == customer.CustomerNumber)
+                .Where(p => p.CustomerNumber == customerNumber)
                 .Select(p => new Payment
                 {
                     CustomerNumber = p.CustomerNumber,
                     CheckNumber = p.CheckNumber,
                     PaymentDate = p.PaymentDate,
                     Amount = p.Amount,
-                    Customer = customer
+                    Customer = p.Customer
                 })
                 .ToList();
 
