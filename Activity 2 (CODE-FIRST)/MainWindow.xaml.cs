@@ -113,11 +113,6 @@ namespace Activity_2__CODE_FIRST_
                 dtgPayments.ItemsSource = manager.GetPayments();
         }
 
-        private void btnGetCustomersWithOverduePayments_Click(object sender, RoutedEventArgs e)
-        {
-            dtgCustomers.ItemsSource = manager.GetCustomersWithOverduePayments();
-        }
-
         private void btnGetCustomersWithMostOrders_Click(object sender, RoutedEventArgs e)
         {
             dtgCustomers.ItemsSource = manager.GetCustomersWithMostOrders();

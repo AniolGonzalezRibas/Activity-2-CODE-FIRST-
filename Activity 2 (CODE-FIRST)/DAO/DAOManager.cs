@@ -255,15 +255,6 @@ namespace Activity_2__CODE_FIRST_.DAO
             return products;
         }
 
-        public List<Customer> GetCustomersWithOverduePayments()
-        {
-            var customers = context.Customers
-                .Include(c => c.Payments)
-                .Where(c => c.Payments.Any(p => DateTime.Parse(p.PaymentDate) < DateTime.Now))
-                .ToList();
-
-            return customers;
-        }
 
         public List<Office> GetOfficesOfManagers()
         {

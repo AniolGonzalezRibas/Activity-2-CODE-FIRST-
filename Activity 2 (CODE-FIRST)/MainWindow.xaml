@@ -32,11 +32,8 @@
                         <Button Name="btnGetCustomersWithPaymentsGreaterThan" Content="Search" Click="btnGetCustomersWithPaymentsGreaterThan_Click" Foreground="White"/>
 
                     </StackPanel>
-                    <StackPanel   VerticalAlignment="Center" Grid.Row="2">
-                        <TextBlock Text="Customers With Overdue Payments"  Margin="0,0,0,10"/>
-                        <Button Name="btnGetCustomersWithOverduePayments" Content="Search" Click="btnGetCustomersWithOverduePayments_Click" Foreground="White"/>
-                    </StackPanel>
-                    <StackPanel VerticalAlignment="Center" Grid.Row="3">
+                    
+                    <StackPanel VerticalAlignment="Center" Grid.Row="2">
                         <TextBlock Text="Customers With Most Orders"  Margin="0,0,0,10"/>
                         <Button Name="btnGetCustomersWithMostOrders" Content="Search" Click="btnGetCustomersWithMostOrders_Click"  Foreground="White"/>
 
