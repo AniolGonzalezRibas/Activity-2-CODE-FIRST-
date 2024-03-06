@@ -123,12 +123,28 @@ namespace Activity_2__CODE_FIRST_
 
         private void btnGetOrdersByYear_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!string.IsNullOrWhiteSpace(txtYear.Text))
+            {
+                if (int.TryParse(txtYear.Text, out int year))
+                {
+                    dtgOrders.ItemsSource = manager.GetOrdersByYear(year);
+                }
+                else
+                    txtYear.Text = string.Empty;
+            }
         }
 
         private void btnGetPaymentsByCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!string.IsNullOrWhiteSpace(txtCustomerNumber.Text))
+            {
+                if (int.TryParse(txtCustomerNumber.Text, out int customerNumber))
+                {
+                    dtgPayments.ItemsSource = manager.GetPaymentsByCustomer(customerNumber);
+                }
+                else
+                    txtCustomerNumber.Text = string.Empty;
+            }
         }
     }
 }
