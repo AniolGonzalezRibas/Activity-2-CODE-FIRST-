@@ -24,7 +24,7 @@
                     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Text="Product Code"  Margin="0,0,0,10"/>
                         <TextBox x:Name="txtCustumerProductCodeFilter"/>
-                        <Button Name="btnGetCustomersByProductCode" Content="Search" Click="btnGetCustomersByProductCode_Clic"/>
+                        <Button Name="btnGetCustomersByProductCode" Content="Search" Click="btnGetCustomersByProductCode_Click"/>
                     </StackPanel>
                     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"> 
                         <TextBlock Text="Price greather than"  Margin="0,0,0,10"/>
