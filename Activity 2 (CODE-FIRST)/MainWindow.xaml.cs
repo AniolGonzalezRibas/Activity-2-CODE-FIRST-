@@ -145,7 +145,7 @@ namespace Activity_2__CODE_FIRST_
 
         private void btnGetOfficesOfManagers_Click(object sender, RoutedEventArgs e)
         {
-
+            dtgOfficess.ItemsSource = manager.GetOfficesOfManagers();
         }
     }
 }
