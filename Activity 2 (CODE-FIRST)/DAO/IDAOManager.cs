@@ -38,5 +38,11 @@ namespace Activity_2__CODE_FIRST_.DAO
         public List<Customer> GetCustomersByProductCode(string productCode);
         public List<Employee> GetEmployeesWithSalesExceedingAmount(double amount);
         public List<Employee> GetEmployeesInSameOfficeAsManager();
+        public List<Product> GetBestSellingProducts();
+        public List<Customer> GetCustomersWithMostOrders();
+        public List<Employee> GetEmployeesWithHighestSales();
+        public List<Order> GetOrdersExceedingShippingDeadline();
+        public List<Product> GetProductsByProfitMargin();
+        public List<Customer> GetCustomersWithOverduePayments();
     }
 }

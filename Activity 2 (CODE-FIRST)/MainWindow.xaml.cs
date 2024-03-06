@@ -80,26 +80,45 @@ namespace Activity_2__CODE_FIRST_
 
         }
 
-        
+
 
         private void btnGetCustomersByProductCode_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!string.IsNullOrWhiteSpace(txtCustumerProductCodeFilter.Text))
+            {
+                dtgCustomers.ItemsSource = manager.GetCustomersByProductCode(txtCustumerProductCodeFilter.Text);
+            }
         }
 
         private void btnGetCustomersWithPaymentsGreaterThan_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!string.IsNullOrWhiteSpace(txtCustumerPriceFilter.Text))
+            {
+                if (int.TryParse(txtCustumerPriceFilter.Text, out int amount))
+                {
+                    dtgCustomers.ItemsSource = manager.GetCustomersWithPaymentsGreaterThan(amount);
+                }
+                else
+                    txtCustumerPriceFilter.Text = string.Empty;
+            }
         }
 
         private void btnGetEmployeesWithSalesExceedingAmount_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!string.IsNullOrWhiteSpace(txtSalesAmount.Text))
+            {
+                if (double.TryParse(txtSalesAmount.Text, out double amount))
+                {
+                    dtgEmployees.ItemsSource = manager.GetEmployeesWithSalesExceedingAmount(amount);
+                }
+                else
+                    txtSalesAmount.Text = string.Empty;
+            }
         }
 
         private void btnGetEmployeesInSameOfficeAsManager_Click(object sender, RoutedEventArgs e)
         {
-
+            dtgEmployees.ItemsSource = manager.GetEmployeesInSameOfficeAsManager();
         }
 
         private void btnGetOrdersByYear_Click(object sender, RoutedEventArgs e)
