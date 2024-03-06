@@ -80,23 +80,7 @@ namespace Activity_2__CODE_FIRST_
 
         }
 
-        private void btnCustomerFilter_Click(object sender, RoutedEventArgs e)
-        {
-            List<Customer> list = new List<Customer>();
-            if (!string.IsNullOrWhiteSpace(txtCustumerProductCodeFilter.Text))
-            {
-                list = manager.GetCustomersByProductCode(txtCustumerProductCodeFilter.Text);
-            }
-            if (!string.IsNullOrWhiteSpace(txtCustumerPriceFilter.Text) )
-            {
-                list = manager.GetCustomersWithPaymentsGreaterThan(Convert.ToInt32(txtCustumerPriceFilter.Text));
-            }
-            else
-                txtCustumerPriceFilter.Text = string.Empty;
-
-
-            dtgCustomers.ItemsSource = list;
-        }
+        
 
         private void btnGetCustomersByProductCode_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +88,16 @@ namespace Activity_2__CODE_FIRST_
         }
 
         private void btnGetCustomersWithPaymentsGreaterThan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetEmployeesWithSalesExceedingAmount_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetEmployeesInSameOfficeAsManager_Click(object sender, RoutedEventArgs e)
         {
 
         }
