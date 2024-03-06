@@ -97,5 +97,15 @@ namespace Activity_2__CODE_FIRST_
 
             dtgCustomers.ItemsSource = list;
         }
+
+        private void btnGetCustomersByProductCode_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetCustomersWithPaymentsGreaterThan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

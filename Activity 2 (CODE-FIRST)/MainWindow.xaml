@@ -9,19 +9,10 @@
     <TabControl>
         <TabItem Header="Customers">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="6*"/>
-                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <DockPanel Grid.Column="0" Grid.Row="0" Margin="20" >
-                    <TextBlock Text="First letter to filter" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                    <Button Content="Filter" Name="btnCustomersFilter" DockPanel.Dock="Right" Margin="20,0,0,0" Foreground="White" Click="btnCustomersFilter_Click"/>
-                    <TextBox x:Name="txtCustomerName" VerticalAlignment="Center"/>
-                </DockPanel>
                 <Grid DockPanel.Dock="Right" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -33,12 +24,14 @@
                     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Text="Product Code"  Margin="0,0,0,10"/>
                         <TextBox x:Name="txtCustumerProductCodeFilter"/>
+                        <Button Name="btnGetCustomersByProductCode" Content="Search" Click="btnGetCustomersByProductCode_Clic"/>
                     </StackPanel>
                     <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"> 
                         <TextBlock Text="Price greather than"  Margin="0,0,0,10"/>
                         <TextBox x:Name="txtCustumerPriceFilter"/>
+                        <Button Name="btnGetCustomersWithPaymentsGreaterThan" Content="Search" Click="btnGetCustomersWithPaymentsGreaterThan_Click"/>
+
                     </StackPanel>
-                    <Button x:Name="btnCustomerFilter" Content="Search" Foreground="White" Grid.Row="8" Margin="20" Click="btnCustomerFilter_Click"/>
                 </Grid>
                 <DataGrid Grid.Column="0" Grid.Row="1" x:Name="dtgCustomers" IsReadOnly="True" Background="AliceBlue"/>
             </Grid>
