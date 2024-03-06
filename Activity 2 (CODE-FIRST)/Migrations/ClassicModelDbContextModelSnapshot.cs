@@ -266,31 +266,6 @@ namespace Activity_2__CODE_FIRST_.Migrations
                     b.ToTable("ProductLiness");
                 });
 
-            modelBuilder.Entity("Activity_2__CODE_FIRST_.MODEL.SpecialPriceList", b =>
-                {
-                    b.Property<int>("SpecialPriceListId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("double");
-
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
-
-                    b.HasKey("SpecialPriceListId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("SpecialPriceLists");
-                });
-
             modelBuilder.Entity("Activity_2__CODE_FIRST_.MODEL.Customer", b =>
                 {
                     b.HasOne("Activity_2__CODE_FIRST_.MODEL.Employee", "Employee")
@@ -345,21 +320,6 @@ namespace Activity_2__CODE_FIRST_.Migrations
                     b.HasOne("Activity_2__CODE_FIRST_.MODEL.ProductLines", "ProductLines")
                         .WithMany("Products")
                         .HasForeignKey("ProductLine");
-                });
-
-            modelBuilder.Entity("Activity_2__CODE_FIRST_.MODEL.SpecialPriceList", b =>
-                {
-                    b.HasOne("Activity_2__CODE_FIRST_.MODEL.Customer", "Customer")
-                        .WithMany("SpecialPriceLists")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Activity_2__CODE_FIRST_.MODEL.Product", "Product")
-                        .WithMany("SpecialPriceLists")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

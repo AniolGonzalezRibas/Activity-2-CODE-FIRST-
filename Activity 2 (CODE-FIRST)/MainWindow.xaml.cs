@@ -26,7 +26,7 @@ namespace Activity_2__CODE_FIRST_
             InitializeComponent();
             manager = DAOFactory.GetDAOManager();
 
-            manager.ImportAll();
+            //manager.ImportAll();
 
             dtgCustomers.ItemsSource = manager.GetCustomers();
             dtgEmployees.ItemsSource = manager.GetEmployees();

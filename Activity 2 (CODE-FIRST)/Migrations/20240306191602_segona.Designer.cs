@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Activity_2__CODE_FIRST_.Migrations
 {
     [DbContext(typeof(ClassicModelDbContext))]
-    [Migration("20240306182532_tercera")]
-    partial class tercera
+    [Migration("20240306191602_segona")]
+    partial class segona
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

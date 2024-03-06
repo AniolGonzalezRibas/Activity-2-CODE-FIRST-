@@ -42,8 +42,8 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public ProductLines? ProductLines { get; set; }
         [Ignore]
         public ICollection<OrderDetail>? OrdersDetails { get; set; }
-        [Ignore]
-        public ICollection<SpecialPriceList> SpecialPriceLists { get; set; }
+        //[Ignore]
+        //public ICollection<SpecialPriceList> SpecialPriceLists { get; set; }
 
     }
 }

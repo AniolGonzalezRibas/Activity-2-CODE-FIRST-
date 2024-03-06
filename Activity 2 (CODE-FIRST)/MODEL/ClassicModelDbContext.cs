@@ -28,7 +28,6 @@ namespace Activity_2__CODE_FIRST_.MODEL
             modelBuilder.Entity<Payment>()
                 .HasKey(o => new { o.CustomerNumber, o.CheckNumber });
 
-         
         }
 
 
@@ -41,8 +40,6 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductLines> ProductLiness { get; set; }
-        public virtual DbSet<SpecialPriceList> SpecialPriceLists { get; set; }
-
 
     }
 }

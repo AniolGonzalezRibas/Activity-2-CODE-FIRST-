@@ -46,8 +46,8 @@ namespace Activity_2__CODE_FIRST_.MODEL
         public ICollection<Payment>? Payments { get; set; }
         [Ignore]
         public ICollection<Order>? Orders { get; set; }
-        [Ignore]
-        public ICollection<SpecialPriceList> SpecialPriceLists { get; set; }
+        //[Ignore]
+        //public ICollection<SpecialPriceList> SpecialPriceLists { get; set; }
 
     }
 }
