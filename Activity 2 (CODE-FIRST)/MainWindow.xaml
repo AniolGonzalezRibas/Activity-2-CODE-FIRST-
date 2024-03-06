@@ -80,7 +80,23 @@
         </TabItem>
         <TabItem Header="Offices">
             <Grid>
-                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid DockPanel.Dock="Right" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel  VerticalAlignment="Center">
+                        <TextBlock Text="Get Offices Of Managers"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetOfficesOfManagers" Content="Search" Click="btnGetOfficesOfManagers_Click"  Foreground="White"/>
+                    </StackPanel>
+                </Grid>
                 <DataGrid x:Name="dtgOfficess" IsReadOnly="True" Background="AliceBlue"/>
             </Grid>
         </TabItem>

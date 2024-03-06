@@ -38,50 +38,6 @@ namespace Activity_2__CODE_FIRST_
             dtgProductLines.ItemsSource = manager.GetProductLines();
         }
 
-
-
-        private void btnCustomersFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnEmployeesFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnOfficesFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSurnameFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnOrderDetailsFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnPaymentFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnProductsFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnProductLinesFilter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-
         private void btnGetCustomersByProductCode_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtCustumerProductCodeFilter.Text))
@@ -151,30 +107,35 @@ namespace Activity_2__CODE_FIRST_
 
         private void btnGetCustomersWithOverduePayments_Click(object sender, RoutedEventArgs e)
         {
-
+            dtgCustomers.ItemsSource = manager.GetCustomersWithOverduePayments();
         }
 
         private void btnGetCustomersWithMostOrders_Click(object sender, RoutedEventArgs e)
         {
-
+            dtgCustomers.ItemsSource = manager.GetCustomersWithMostOrders();
         }
 
         private void btnGetBestSellingProducts_Click(object sender, RoutedEventArgs e)
         {
-
+            dtgProducts.ItemsSource = manager.GetBestSellingProducts();
         }
 
         private void btnGetProductsByProfitMargin_Click(object sender, RoutedEventArgs e)
         {
-
+            dtgProducts.ItemsSource = manager.GetProductsByProfitMargin();
         }
 
         private void btnGetEmployeesWithHighestSales_Click(object sender, RoutedEventArgs e)
         {
-
+            dtgEmployees.ItemsSource = manager.GetEmployeesWithHighestSales();
         }
 
         private void btnGetOrdersExceedingShippingDeadline_Click(object sender, RoutedEventArgs e)
+        {
+            dtgOrders.ItemsSource = manager.GetOrdersExceedingShippingDeadline();
+        }
+
+        private void btnGetOfficesOfManagers_Click(object sender, RoutedEventArgs e)
         {
 
         }
