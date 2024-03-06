@@ -145,6 +145,8 @@ namespace Activity_2__CODE_FIRST_
                 else
                     txtCustomerNumber.Text = string.Empty;
             }
+            else
+                dtgPayments.ItemsSource = manager.GetPayments();
         }
     }
 }

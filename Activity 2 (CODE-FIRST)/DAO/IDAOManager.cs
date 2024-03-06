@@ -44,5 +44,6 @@ namespace Activity_2__CODE_FIRST_.DAO
         public List<Order> GetOrdersExceedingShippingDeadline();
         public List<Product> GetProductsByProfitMargin();
         public List<Customer> GetCustomersWithOverduePayments();
+        public List<Office> GetOfficesOfManagers();
     }
 }
