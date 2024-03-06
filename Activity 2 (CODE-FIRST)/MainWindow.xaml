@@ -65,64 +65,73 @@
             </Grid>
         </TabItem>
         <TabItem Header="Offices">
-            <DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="20">
-                    <TextBlock Text="First letter to filter" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                    <Button Content="Filter" Name="btnOfficesFilter" DockPanel.Dock="Right" Margin="20,0,0,0" Foreground="White" Click="btnOfficesFilter_Click"/>
-                    <TextBox x:Name="txtOfficeName" VerticalAlignment="Center"/>
-                </DockPanel>
+            <Grid>
+                
                 <DataGrid x:Name="dtgOfficess" IsReadOnly="True" Background="AliceBlue"/>
-            </DockPanel>
+            </Grid>
         </TabItem>
         <TabItem Header="Orders">
-            <DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="20">
-                    <TextBlock Text="First letter to filter" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                    <Button Content="Filter" Name="btnSurnameFilter" DockPanel.Dock="Right" Margin="20,0,0,0" Foreground="White" Click="btnSurnameFilter_Click"/>
-                    <TextBox x:Name="txtSurnameActor" VerticalAlignment="Center"/>
-                </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid DockPanel.Dock="Right" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Year"  Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtYear"/>
+                        <Button Name="btnGetOrdersByYear" Content="Search" Click="btnGetOrdersByYear_Click"/>
+                    </StackPanel>
+                </Grid>
                 <DataGrid x:Name="dtgOrders" IsReadOnly="True" Background="AliceBlue"/>
-            </DockPanel>
+            </Grid>
         </TabItem>
         <TabItem Header="OrderDetails">
-            <DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="20">
-                    <TextBlock Text="First letter to filter" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                    <Button Content="Filter" Name="btnOrderDetailsFilter" DockPanel.Dock="Right" Margin="20,0,0,0" Foreground="White" Click="btnOrderDetailsFilter_Click"/>
-                    <TextBox x:Name="txtOrderDetails" VerticalAlignment="Center"/>
-                </DockPanel>
+            <Grid>
+                
                 <DataGrid x:Name="dtgOrderDetails" IsReadOnly="True" Background="AliceBlue"/>
-            </DockPanel>
+            </Grid>
         </TabItem>
         <TabItem Header="Payments">
-            <DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="20">
-                    <TextBlock Text="First letter to filter" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                    <Button Content="Filter" Name="btnPaymentFilter" DockPanel.Dock="Right" Margin="20,0,0,0" Foreground="White" Click="btnPaymentFilter_Click"/>
-                    <TextBox x:Name="txtPaymentName" VerticalAlignment="Center"/>
-                </DockPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid DockPanel.Dock="Right" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Customer Number"  Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtCustomerNumber"/>
+                        <Button Name="btnGetPaymentsByCustomer" Content="Search" Click="btnGetPaymentsByCustomer_Click"/>
+                    </StackPanel>
+                </Grid>
                 <DataGrid x:Name="dtgPayments" IsReadOnly="True" Background="AliceBlue"/>
-            </DockPanel>
+            </Grid>
         </TabItem>
         <TabItem Header="Products">
-            <DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="20">
-                    <TextBlock Text="First letter to filter" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                    <Button Content="Filter" Name="btnProductsFilter" DockPanel.Dock="Right" Margin="20,0,0,0" Foreground="White" Click="btnProductsFilter_Click"/>
-                    <TextBox x:Name="txtProductsName" VerticalAlignment="Center"/>
-                </DockPanel>
+            <Grid>
                 <DataGrid x:Name="dtgProducts" IsReadOnly="True" Background="AliceBlue"/>
-            </DockPanel>
+            </Grid>
         </TabItem>
         <TabItem Header="ProductLines">
-            <DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="20">
-                    <TextBlock Text="First letter to filter" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
-                    <Button Content="Filter" Name="btnProductLinesFilter" DockPanel.Dock="Right" Margin="20,0,0,0" Foreground="White" Click="btnProductLinesFilter_Click"/>
-                    <TextBox x:Name="txtProductLinesName" VerticalAlignment="Center"/>
-                </DockPanel>
+            <Grid>
+                
                 <DataGrid x:Name="dtgProductLines" IsReadOnly="True" Background="AliceBlue"/>
-            </DockPanel>
+            </Grid>
         </TabItem>
     </TabControl>
 </Window>

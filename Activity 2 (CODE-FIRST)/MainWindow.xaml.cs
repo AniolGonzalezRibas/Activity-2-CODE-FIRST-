@@ -101,5 +101,15 @@ namespace Activity_2__CODE_FIRST_
         {
 
         }
+
+        private void btnGetOrdersByYear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnGetPaymentsByCustomer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
