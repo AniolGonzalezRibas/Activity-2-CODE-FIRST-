@@ -204,6 +204,68 @@ namespace Activity_2__CODE_FIRST_.DAO
             return employees;
         }
 
+        public List<Product> GetBestSellingProducts()
+        {
+            var products = context.Products
+                .Include(p => p.OrdersDetails)
+                .OrderByDescending(p => p.OrdersDetails.Sum(od => od.QuantityOrdered))
+                .ToList();
+
+            return products;
+        }
+
+        public List<Customer> GetCustomersWithMostOrders()
+        {
+            var customers = context.Customers
+                .Include(c => c.Orders)
+                .OrderByDescending(c => c.Orders.Count)
+                .ToList();
+
+            return customers;
+        }
+
+        public List<Employee> GetEmployeesWithHighestSales()
+        {
+            var employees = context.Employees
+                .Include(e => e.Customers)
+                .ThenInclude(c => c.Payments)
+                .OrderByDescending(e => e.Customers.Sum(c => c.Payments.Sum(p => p.Amount)))
+                .ToList();
+
+            return employees;
+        }
+
+        public List<Order> GetOrdersExceedingShippingDeadline()
+        {
+            var orders = context.Orders
+                .AsQueryable()
+                .Where(o => o.ShippedDate == null && o.RequiredDate < DateTime.Now)
+                .ToList();
+
+            return orders;
+        }
+
+        public List<Product> GetProductsByProfitMargin()
+        {
+            var products = context.Products
+                .AsQueryable()
+                .OrderByDescending(p => p.BuyPrice - p.MSRP)
+                .ToList();
+
+            return products;
+        }
+
+        public List<Customer> GetCustomersWithOverduePayments()
+        {
+            var customers = context.Customers
+                .Include(c => c.Payments)
+                .Where(c => c.Payments.Any(p => DateTime.Parse(p.PaymentDate) < DateTime.Now))
+                .ToList();
+
+            return customers;
+        }
+
+
 
         #region addRegion
 
