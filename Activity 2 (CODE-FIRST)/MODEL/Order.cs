@@ -38,5 +38,10 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [Ignore]
         public ICollection<OrderDetail> OrdersDetails { get; set; }
 
+        public override string ToString()
+        {
+            return OrderNumber.ToString();
+        }
+
     }
 }

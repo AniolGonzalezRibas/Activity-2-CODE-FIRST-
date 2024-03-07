@@ -49,5 +49,10 @@ namespace Activity_2__CODE_FIRST_.MODEL
         //[Ignore]
         //public ICollection<SpecialPriceList> SpecialPriceLists { get; set; }
 
+
+        public override string ToString()
+        {
+            return CustomerNumber.ToString();
+        }
     }
 }

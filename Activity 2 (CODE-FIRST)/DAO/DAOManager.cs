@@ -267,6 +267,26 @@ namespace Activity_2__CODE_FIRST_.DAO
             return officesOfManagers;
         }
 
+        public List<Office> GetOfficesByEmployeeCode(int employeeCode)
+        {
+            var offices = context.Offices
+                .AsQueryable()
+                .Where(o => o.Employees.Any(e => e.EmployeeNumber == employeeCode))
+                .ToList();
+
+            return offices;
+        }
+
+        public List<Office> GetOfficesByCustomerNumber(int customerNumber)
+        {
+            var offices = context.Offices
+                .AsQueryable()
+                .Where(o => o.Employees.Any(e => e.Customers.Any(c => c.CustomerNumber == customerNumber)))
+                .ToList();
+
+            return offices;
+        }
+
 
         #region addRegion
 

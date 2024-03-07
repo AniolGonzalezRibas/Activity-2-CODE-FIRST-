@@ -40,5 +40,11 @@ namespace Activity_2__CODE_FIRST_.MODEL
         //Revisar si es 0,1 -> N o 0,1 -> 0,1
         //[Ignore]
         //public ICollection<Employee>? Employees { get; set; }
+
+
+        public override string ToString()
+        {
+            return EmployeeNumber.ToString();
+        }
     }
 }

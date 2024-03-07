@@ -142,5 +142,37 @@ namespace Activity_2__CODE_FIRST_
         {
             dtgOfficess.ItemsSource = manager.GetOfficesOfManagers();
         }
+
+        private void btnGetOfficesByEmployeeNumber_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtOfficeEmployeeNumber.Text))
+            {
+                if (int.TryParse(txtOfficeEmployeeNumber.Text, out int employeeCode))
+                {
+                    dtgOfficess.ItemsSource = manager.GetOfficesByEmployeeCode(employeeCode);
+                }
+                else
+                    txtOfficeEmployeeNumber.Text = string.Empty;
+            }
+            else
+                dtgOfficess.ItemsSource = manager.GetOffices();
+        }
+
+        private void btnGetOfficesByCustomerNumber_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtOfficeCustomerNumber.Text))
+            {
+                if (int.TryParse(txtOfficeCustomerNumber.Text, out int customerNumber))
+                {
+                    dtgOfficess.ItemsSource = manager.GetOfficesByCustomerNumber(customerNumber);
+                }
+                else
+                    txtOfficeCustomerNumber.Text = string.Empty;
+            }
+            else
+                dtgOfficess.ItemsSource = manager.GetOffices();
+        }
+
+        
     }
 }

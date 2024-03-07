@@ -93,6 +93,16 @@
                         <TextBlock Text="Get Offices Of Managers"  Margin="0,0,0,10"/>
                         <Button Name="btnGetOfficesOfManagers" Content="Search" Click="btnGetOfficesOfManagers_Click"  Foreground="White"/>
                     </StackPanel>
+                    <StackPanel  VerticalAlignment="Center" Grid.Row="1">
+                        <TextBlock Text="Get Offices by Employee Number"  Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtOfficeEmployeeNumber"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetOfficesByEmployeeNumber" Content="Search" Click="btnGetOfficesByEmployeeNumber_Click" Foreground="White"/>
+                    </StackPanel>
+                    <StackPanel  VerticalAlignment="Center" Grid.Row="2">
+                        <TextBlock Text="Get Offices by Customer Number"  Margin="0,0,0,10"/>
+                        <TextBox x:Name="txtOfficeCustomerNumber"  Margin="0,0,0,10"/>
+                        <Button Name="btnGetOfficesByCustomerNumber" Content="Search" Click="btnGetOfficesByCustomerNumber_Click"  Foreground="White"/>
+                    </StackPanel>
                 </Grid>
                 <DataGrid x:Name="dtgOfficess" IsReadOnly="True" Background="AliceBlue"/>
             </Grid>
