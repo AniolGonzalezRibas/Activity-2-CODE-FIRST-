@@ -37,7 +37,6 @@ namespace Activity_2__CODE_FIRST_.MODEL
         [Ignore]
         public ICollection<Customer>? Customers { get; set; }
 
-        //Revisar si es 0,1 -> N o 0,1 -> 0,1
         //[Ignore]
         //public ICollection<Employee>? Employees { get; set; }
 

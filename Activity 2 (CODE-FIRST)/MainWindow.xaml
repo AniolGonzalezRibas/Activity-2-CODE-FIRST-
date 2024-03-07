@@ -39,7 +39,23 @@
 
                     </StackPanel>
                 </Grid>
-                <DataGrid Grid.Column="0" Grid.Row="1" x:Name="dtgCustomers" IsReadOnly="True" Background="AliceBlue"/>
+                <DataGrid Grid.Column="0" Grid.Row="1" x:Name="dtgCustomers" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Customer Number" Binding="{Binding CustomerNumber}" />
+                        <DataGridTextColumn Header="Customer Name" Binding="{Binding CustomerName}" />
+                        <DataGridTextColumn Header="Contact Last Name" Binding="{Binding ContactLastName}" />
+                        <DataGridTextColumn Header="Contact First Name" Binding="{Binding ContactFirstName}" />
+                        <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" />
+                        <DataGridTextColumn Header="Address Line 1" Binding="{Binding AdressLine1}" />
+                        <DataGridTextColumn Header="Address Line 2" Binding="{Binding AdressLine2}" />
+                        <DataGridTextColumn Header="City" Binding="{Binding City}" />
+                        <DataGridTextColumn Header="State" Binding="{Binding State}" />
+                        <DataGridTextColumn Header="Postal Code" Binding="{Binding PostalCode}" />
+                        <DataGridTextColumn Header="Country" Binding="{Binding Country}" />
+                        <DataGridTextColumn Header="Sales Rep Employee Number" Binding="{Binding SalesRepEmployeeNumber}" />
+                        <DataGridTextColumn Header="Credit Limit" Binding="{Binding CreditLimit}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="Employees">
@@ -72,7 +88,18 @@
 
                     </StackPanel>
                 </Grid>
-                <DataGrid x:Name="dtgEmployees" IsReadOnly="True" Background="AliceBlue"/>
+                <DataGrid x:Name="dtgEmployees" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Employee Number" Binding="{Binding EmployeeNumber}" />
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" />
+                        <DataGridTextColumn Header="Extension" Binding="{Binding Extension}" />
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                        <DataGridTextColumn Header="Office Code" Binding="{Binding OfficeCode}" />
+                        <DataGridTextColumn Header="Reports To" Binding="{Binding ReportsTo}" />
+                        <DataGridTextColumn Header="Job Title" Binding="{Binding JobTitle}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="Offices">
@@ -104,7 +131,19 @@
                         <Button Name="btnGetOfficesByCustomerNumber" Content="Search" Click="btnGetOfficesByCustomerNumber_Click"  Foreground="White"/>
                     </StackPanel>
                 </Grid>
-                <DataGrid x:Name="dtgOfficess" IsReadOnly="True" Background="AliceBlue"/>
+                <DataGrid x:Name="dtgOfficess" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Office Code" Binding="{Binding OfficeCode}" />
+                        <DataGridTextColumn Header="City" Binding="{Binding City}" />
+                        <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" />
+                        <DataGridTextColumn Header="Address Line 1" Binding="{Binding AdressLine1}" />
+                        <DataGridTextColumn Header="Address Line 2" Binding="{Binding AdressLine2}" />
+                        <DataGridTextColumn Header="State" Binding="{Binding State}" />
+                        <DataGridTextColumn Header="Country" Binding="{Binding Country}" />
+                        <DataGridTextColumn Header="Postal Code" Binding="{Binding PostalCode}" />
+                        <DataGridTextColumn Header="Territory" Binding="{Binding Territory}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="Orders">
@@ -131,13 +170,31 @@
                         <Button Name="btnGetOrdersExceedingShippingDeadline" Content="Search" Click="btnGetOrdersExceedingShippingDeadline_Click"  Foreground="White"/>
                     </StackPanel>
                 </Grid>
-                <DataGrid x:Name="dtgOrders" IsReadOnly="True" Background="AliceBlue"/>
+                <DataGrid x:Name="dtgOrders" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Order Number" Binding="{Binding OrderNumber}" />
+                        <DataGridTextColumn Header="Order Date" Binding="{Binding OrderDate}" />
+                        <DataGridTextColumn Header="Required Date" Binding="{Binding RequiredDate}" />
+                        <DataGridTextColumn Header="Shipped Date" Binding="{Binding ShippedDate}" />
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                        <DataGridTextColumn Header="Comments" Binding="{Binding Comments}" />
+                        <DataGridTextColumn Header="Customer Number" Binding="{Binding CustomerNumber}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="OrderDetails">
             <Grid>
-                
-                <DataGrid x:Name="dtgOrderDetails" IsReadOnly="True" Background="AliceBlue"/>
+
+                <DataGrid x:Name="dtgOrderDetails" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Order Number" Binding="{Binding OrderNumber}" />
+                        <DataGridTextColumn Header="Product Code" Binding="{Binding ProductCode}" />
+                        <DataGridTextColumn Header="Quantity Ordered" Binding="{Binding QuantityOrdered}" />
+                        <DataGridTextColumn Header="Price Each" Binding="{Binding PriceEach}" />
+                        <DataGridTextColumn Header="Order Line Number" Binding="{Binding OrderLineNumber}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="Payments">
@@ -160,7 +217,14 @@
                         <Button Name="btnGetPaymentsByCustomer" Content="Search" Click="btnGetPaymentsByCustomer_Click" Foreground="White"/>
                     </StackPanel>
                 </Grid>
-                <DataGrid x:Name="dtgPayments" IsReadOnly="True" Background="AliceBlue"/>
+                <DataGrid x:Name="dtgPayments" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Customer Number" Binding="{Binding CustomerNumber}" />
+                        <DataGridTextColumn Header="Check Number" Binding="{Binding CheckNumber}" />
+                        <DataGridTextColumn Header="Payment Date" Binding="{Binding PaymentDate}" />
+                        <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="Products">
@@ -186,13 +250,32 @@
                         <Button Name="btnGetProductsByProfitMargin" Content="Search" Click="btnGetProductsByProfitMargin_Click" Foreground="White"/>
                     </StackPanel>
                 </Grid>
-                <DataGrid x:Name="dtgProducts" IsReadOnly="True" Background="AliceBlue"/>
+                <DataGrid x:Name="dtgProducts" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Product Code" Binding="{Binding ProductCode}" />
+                        <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" />
+                        <DataGridTextColumn Header="Product Line" Binding="{Binding ProductLine}" />
+                        <DataGridTextColumn Header="Product Scale" Binding="{Binding ProductScale}" />
+                        <DataGridTextColumn Header="Product Vendor" Binding="{Binding ProductVendor}" />
+                        <DataGridTextColumn Header="Product Description" Binding="{Binding ProductDescription}" />
+                        <DataGridTextColumn Header="Quantity In Stock" Binding="{Binding QuantityStock}" />
+                        <DataGridTextColumn Header="Buy Price" Binding="{Binding BuyPrice}" />
+                        <DataGridTextColumn Header="MSRP" Binding="{Binding MSRP}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
         <TabItem Header="ProductLines">
             <Grid>
-                
-                <DataGrid x:Name="dtgProductLines" IsReadOnly="True" Background="AliceBlue"/>
+
+                <DataGrid x:Name="dtgProductLines" IsReadOnly="True" Background="AliceBlue" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Product Line" Binding="{Binding ProductLine}" />
+                        <DataGridTextColumn Header="Text Description" Binding="{Binding TextDescription}" />
+                        <DataGridTextColumn Header="HTML Description" Binding="{Binding HtmlDescription}" />
+                        <DataGridTextColumn Header="Image" Binding="{Binding Image}" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
         </TabItem>
     </TabControl>
